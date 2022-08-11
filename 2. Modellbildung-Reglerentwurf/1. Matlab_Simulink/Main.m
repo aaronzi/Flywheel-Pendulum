@@ -30,34 +30,44 @@ x_c = [0; 0; 0; 0];      % Ruhelage
 
 
 %% REGLER - EINFACHE ZUSTANDSRÜCKFÜHRUNG
-alpha = 0.1;                              % Decay Rate
-k = LMI_Berechnung_k(A, B, alpha);      % k-Faktoren
-sP = eig(A - B*k);                      % Eigenwerte des Reglers
-
-% Polregion und Polstellen plotten
-hold on;
-% Decay-Rate
-xline(-alpha, "m--");
+alpha = 0.5;                                            % Decay Rate
+theta = 50*pi/180;                                      % Kegelwinkel
+r = 14;                                                 % Radius des Halbkreises
+k = LMI_Berechnung_k_komplex(A, B, alpha, theta, r);    % k-Faktoren
+sP = eig(A - B*k);                                      % Eigenwerte des Reglers
 
 %{
+% Polregion und Polstellen plotten
+figure
+hold on;
+
+% Decay-Rate
+xline(-alpha, "m--");                                               % Ploten der Decay-Rate
+
 % Halbkreis
 Kreis_Aus = pi/2:0.01:3/2*pi; 
 x_Kreis = r*cos(Kreis_Aus);
 y_Kreis = r*sin(Kreis_Aus);
-plot(x_Kreis, y_Kreis, "--k");
+plot(x_Kreis, y_Kreis, "--k");                                      % Kreisausschnitt
 
 % Kegel
-x_Kegel = 0:-75:-75;
+x_Kegel = 0:-10:-10;
 y_Kegel_oben = -tan(theta)*x_Kegel;
 y_Kegel_unten = (-tan(theta)*x_Kegel)*(-1);
-plot(x_Kegel, y_Kegel_oben, "b--", x_Kegel, y_Kegel_unten, "b--");
-%}
+plot(x_Kegel, y_Kegel_oben, "b--", x_Kegel, y_Kegel_unten, "b--");  % Kegel
 
 % Lokalisierung der Polstellen
 p1 = plot(real(eig(A)), imag(eig(A)), "bx", "LineWidth", 2);
-p2= plot(real(sP), imag(sP), "rx", "LineWidth", 2);
+p2 = plot(real(sP), imag(sP), "rx", "LineWidth", 2);
 xlabel("Real(x)");
 ylabel("Imag(x)");
-legend([p1 p2], "Eigenwerte der Systemmatrix", "Reglerpolstellen", "Location", "northwest");
+legend([p1 p2], "Eigenwerte der Systemmatrix", "Eigenwerte geregeltes System", "Location", "northeast");
 grid on;
 hold off;
+
+% PDF SPEICHERN
+pos = get(gcf, 'Position');
+set(gcf, 'Position',pos-[0 0 0 100]);
+filename = fullfile('Vergleich_der_Polstellenlagen.pdf');
+exportgraphics(gcf,filename,'ContentType','vector');
+%}
