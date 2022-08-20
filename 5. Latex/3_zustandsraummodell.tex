@@ -1,204 +1,207 @@
+\pagestyle{aaron}
 \section{Zustandsraumdarstellung} \label{sec:Zustandsraumdarstellung}
 
 Um das Verhalten mittels mathematischer Beziehungen zu veranschaulichen, wird die \textbf{Zustandsraumdarstellung} verwendet. Der \textbf{Systemeingang} wird festgelegt mit
 
-\begin{align*}
-    \underline{u} &= d,
-\end{align*}
+\begin{equation} \label{eq:Gleichung3.1}
+    \underline{u} = V_{\mathrm{m}},
+\end{equation}
 \newline
-die \textbf{Systemzustände} sind
+wobei $V_{\mathrm{m}}$ die Eingangsspannung des Gleichstrommotors aus \autoref{eq:Gleichung2.1} ist.Die \textbf{Systemzustände} des Schwungrad-Pendels sind:
 
 \begin{align}
     \underline{x} &=
-    \begin{bmatrix}
+    \begin{bmatrix} \label{eq:Gleichung3.2}
         x_{\mathrm{1}} \\
-        x_{\mathrm{2}}
-    \end{bmatrix} = 
+        x_{\mathrm{2}} \\
+        x_{\mathrm{3}} \\
+        x_{\mathrm{4}}
+    \end{bmatrix} =
     \begin{bmatrix}
-        v_{\mathrm{PV}} \\
-        i_{\mathrm{L}}
+        \varphi     \\
+        \dot\varphi \\
+        \theta      \\
+        \dot\theta
     \end{bmatrix}
-    \label{eq:Gleichung9}
 \end{align}
 \newline
-und die \textbf{Ausgänge des Systems} gleichen den beiden Zuständen und ergeben sich somit zu
+Nach zeitlicher Ableitung des Zustandsvektors ergibt sich der \textbf{Vektor der Zustandsänderung} zu:
 
-\begin{align*}
-    \underline{y} &= 
+\begin{align}
+    \underline{x} &=
+    \begin{bmatrix} \label{eq:Gleichung3.3}
+        \dot x_{\mathrm{1}} \\
+        \dot x_{\mathrm{2}} \\
+        \dot x_{\mathrm{3}} \\
+        \dot x_{\mathrm{4}}
+    \end{bmatrix} =
     \begin{bmatrix}
-        v_{\mathrm{PV}} \\
-        i_{\mathrm{L}}
+        \dot\varphi     \\
+        \ddot\varphi    \\
+        \dot\theta      \\
+        \ddot\theta
+    \end{bmatrix}
+\end{align}
+\newline
+Die \textbf{Ausgänge des Systems} gleichen den den vier Zuständen und ergeben sich somit zu
+
+\begin{align}
+    \underline{y} &=
+    \begin{bmatrix} \label{eq:Gleichung3.4}
+        \varphi     \\
+        \dot\varphi \\
+        \theta      \\
+        \dot\theta
     \end{bmatrix}.
-\end{align*}
+\end{align}
 
-\subsection{Nichtlinear} \label{sec:Nichtlinear}
+\subsection{Nichtlineares Zustandsraummodell}
 
-Die nachstehend gezeigten \textbf{Zustandsänderungsgleichungen des Mittelwertmodells} werden für weitere Betrachtungen als bekannt vorausgesetzt und deren Herleitung als korrekt angenommen.
+Zum Aufstellen des nichtlinearen Zustandsraummodells werden die \autoref{eq:Gleichung2.12} und \autoref{eq:Gleichung2.14} nach den höchsten Ableitungen von $\ddot\varphi$ und $\ddot\theta$ umgestellt.
 
-\begin{empheq}[box=\widefbox]{align}
+\begin{align} \label{eq:Gleichung3.5}
     \begin{split}
-        \dot{x}_{\mathrm{1}} &= \frac{1}{C}\cdot i_{\mathrm{pv}}(x_{\mathrm{1}}, S, T_{\mathrm{c}})-\frac{1}{C}\cdot x_{\mathrm{2}}\cdot d \\\\
-        \dot{x}_{\mathrm{2}} &= \frac{1}{L}\cdot x_{\mathrm{1}}\cdot d-\frac{1}{L}\cdot v_{\mathrm{DC}}
+        \ddot\varphi &= \frac{K_{\mathrm{t}} \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}} - c_2 \dot\varphi - J_2 \cdot \ddot\theta}{J_2} \\
+        \ddot\theta &= \frac{-J_2 \ddot\varphi - c_1 \dot\theta + \left( m_1 l_1 + m_2 l_2\right) g \sin(\theta)}{m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2}
     \end{split}
-\end{empheq}
-\newline
-mit
-
-\begin{align*}
-    L = 1.76mH;\quad C = 15.7mF;\quad d = 0.8579; \\
-    v_{\mathrm{DC}} = 900V;\quad S = 1000\frac{W}{m^2};\quad T_{\mathrm{c}} = 298K
-\end{align*}
-
-\subsection{Linear} \label{sec:Linear}
-
-\subsubsection{Ruhelagen} \label{sec:Ruhelagen}
-
-Die Ruhelagen des Systems werden ermittelt, indem das Mittelwertmodell aus \autoref{sec:Nichtlinear} gleich Null gesetzt wird
-
-\begin{align*}
-    \dot{x}_{\mathrm{1}}^* &= \dot{x}_{\mathrm{1}}(x_{\mathrm{1}}^*, x_{\mathrm{2}}^*) \overset{!}{=} 0 \\\\
-    \dot{x}_{\mathrm{2}}^* &= \dot{x}_{\mathrm{2}}(x_{\mathrm{1}}^*, x_{\mathrm{2}}^*) \overset{!}{=} 0
-\end{align*}
-\newline
-und anschließend die Auflösung nach den Zuständen $x_{\mathrm{1}}$
-
-\begin{align}
-    0 &= \frac{1}{L}\cdot x_{\mathrm{1}}^*\cdot d-\frac{1}{L}\cdot v_{\mathrm{DC}} \nonumber \\ \nonumber \\
-    \frac{1}{L}\cdot v_{\mathrm{DC}} &= \frac{1}{L}\cdot x_{\mathrm{1}}^*\cdot d \nonumber \\ \nonumber \\
-    x_{\mathrm{1}}^* &= \frac{v_{\mathrm{DC}}}{d}
-    \label{eq:Gleichung10}
 \end{align}
 \newline
-und $x_{\mathrm{2}}$
+Beide Gleichungen sind über die die Winkelbeschleunigung des Schwungrades $\ddot\varphi$ und die des Pendels $\ddot\theta$ miteinander verkoppelt. Durch das gegenseitige ineinander Einsetzen werden die Abhängigkeiten eliminiert.
 
-\begin{align}
-    0 &= \frac{1}{C}\cdot i_{\mathrm{pv}}(x_{\mathrm{1}}^*, S, T_{\mathrm{c}})-\frac{1}{C}\cdot x_{\mathrm{2}}^*\cdot d \nonumber \\ \nonumber \\
-    \frac{1}{C}\cdot x_{\mathrm{2}}^*\cdot d &= \frac{1}{C}\cdot i_{\mathrm{pv}}(x_{\mathrm{1}}^*, S, T_{\mathrm{c}}) \nonumber \\ \nonumber \\
-    \dot{x}_{\mathrm{2}}^* &= \frac{i_{\mathrm{pv}}(x_{\mathrm{1}}^*, S, T_{\mathrm{c}})}{d}
-    \label{eq:Gleichung11}
-\end{align}
-\newline
-erfolgt.\\
-
-Die spezifischen \textbf{Ruhelagen} aufgrund der vorgegebenen Parameter resultieren zu
-
-\begin{empheq}[box=\widefbox]{align}
-    \underline{\underline{x_{\mathrm{1}}^*}} &= \frac{900V}{0.8579} \approx \underline{\underline{1049.13V}} \nonumber \\ \nonumber \\
-    \underline{\underline{x_{\mathrm{2}}^*}} &= \frac{i_{\mathrm{pv}}(1049.13V, 1000\frac{W}{m^2}, 298K)}{0.8579} \approx\underline{\underline{3422.92A}} \nonumber \\ \nonumber \\
-    \underline{x}^* &= 
-    \begin{bmatrix}
-        x_{\mathrm{1}}^* \\
-        x_{\mathrm{2}}^*
-    \end{bmatrix} \approx
-    \begin{bmatrix}
-        1049.13V \\
-        3422.92A
-    \end{bmatrix}.
-    \label{eq:Gleichung12}
-\end{empheq}
-
-\subsubsection{Linearisierungsvorschrift} \label{sec:Linearisierungsvorschrift}
-
-Die Vorschrift zur \textbf{Linearisierung nach Taylor} ist in \autoref{eq:Gleichung13} hinterlegt.
-
-\begin{align}
+\begin{align} \label{eq:Gleichung3.6}
     \begin{split}
-        \dot{\underline{x}}^{*}+\Delta{\dot{\underline{x}}} &=\underline{f}(\underline{x}^{*}+\Delta{\underline{x}},\underline{u}^{*}+\Delta{\underline{u}})\\\\
+        \ddot\varphi &= \frac{K_{\mathrm{t}} \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}} - c_2 \dot\varphi - J_2 \cdot \left( \frac{-J_2 \ddot\varphi - c_1 \dot\theta + \left( m_1 l_1 + m_2 l_2\right) g \sin(\theta)}{m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2}\right)}{J_2} \\
+        \ddot\theta &= \frac{-J_2 \left( \frac{K_{\mathrm{t}} \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}} - c_2 \dot\varphi - J_2 \cdot \ddot\theta}{J_2}\right) - c_1 \dot\theta + \left( m_1 l_1 + m_2 l_2\right) g \sin(\theta)}{m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2}
+    \end{split}
+\end{align}
+\newline
+Mit Hilfe der Gleichungen \ref{eq:Gleichung3.1}, \ref{eq:Gleichung3.2} und \ref{eq:Gleichung3.3}, durch das einsetzen in \autoref{eq:Gleichung3.6} und dem Zusammenfassen und Umstellen nach $\ddot\varphi$ \bzw $\ddot\theta$ folgt das \textbf{nichtlineare Zustandsraummodell}.
+
+\begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung3.7}
+    \underline{\dot x} =
+    \begin{bmatrix}
+        x_{\mathrm{2}} \\
+        \frac{\frac{K_{\mathrm{t}} \cdot \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \cdot x_4}{R_{\mathrm{a}}} - c_2 \cdot x_4 - \left( m_1 l_1 + m_2 l_2\right) g\sin(x_1) + c_1 \cdot x_2}{J_2}}{1 - \frac{m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2}{J_2}} \\
+        x_{\mathrm{4}} \\
+        \frac{\frac{\left( m_1 l_1 + m_2 l_2\right) g\sin(x_1) - c_1 \cdot x_2 - \left( m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2\right) \cdot \frac{K_{\mathrm{t}} \cdot \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \cdot x_4}{R_{\mathrm{a}}}}{J_2}}{J_2}}{1 - \frac{m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2}{J_2}}
+    \end{bmatrix}
+\end{empheq}
+
+\subsection{Lineares Zustandsraummodell}
+
+Das Verhalten des nichtlinearen Systems ist für große Änderungen des Eingangssignals nicht vorhersehbar. Um dennoch Aussagen über das Systemverhalten treffen zu können, wird das nichtlineare Zustandsraummodell mithilfe der Taylorreihenentwicklung um eine Ruhelage ($\underline{x}^{*}$) linearisiert. Die nichtlinearen Restglieder $\underline{R}(\Delta{\underline{x}^2}, \Delta{\underline{u}^2})$ werden zu Null angenommen. Durch die Linearisierung wird das Systemverhalten für kleine Änderungen um die Ruhelage kontrollierbar. Nachfolgend ist die Taylorreihenentwicklung für Linearisierung aufgeführt:
+
+\begin{align} \label{eq:Gleichung3.8}
+    \begin{split}
+        \dot{\underline{x}}^{*}+\Delta{\dot{\underline{x}}} &=\underline{f}(\underline{x}^{*}+\Delta{\underline{x}},\underline{u}^{*}+\Delta{\underline{u}}) \\
         &=\underline{f}(\underline{x}^{*},\underline{u}^{*})+\left[\frac{\partial f_{\mathrm{i}}}{\partial x_{\mathrm{j}}}\right]_{(\underline{x}^{*}, \underline{u}^{*})}\cdot\Delta{\underline{x}}+\left[\frac{\partial f_{\mathrm{i}}}{\partial u_{\mathrm{j}}}\right]_{(\underline{x}^{*},\underline{u}^{*})}\cdot\Delta{\underline{u}}+\underline{R}(\Delta{\underline{x}^2}, \Delta{\underline{u}^2})
     \end{split}
-    \label{eq:Gleichung13}
 \end{align}
 \newline
-Durch die Annahme über das Verhalten der nichtlinearen Restglieder folgt die \textbf{Struktur der Linearisierung} aus \autoref{eq:Gleichung14}.
+Durch die Annahme über das Verhalten der nichtlinearen Restglieder folgt die Struktur des linearen Zustandsraummodells dargestellt in \autoref{eq:Gleichung3.9}.
 
-\begin{align}
+\begin{align} \label{eq:Gleichung3.9}
     \begin{split}
-        \Delta\dot{\underline{x}} &= \left[\frac{\partial f_{\mathrm{i}}}{\partial x_{\mathrm{j}}}\right]_{(\underline{x}^{*}, \underline{u}^{*})}\cdot\Delta{\underline{x}}+\left[\frac{\partial f_{\mathrm{i}}}{\partial u_{\mathrm{j}}}\right]_{(\underline{x}^{*},\underline{u}^{*})}\cdot\Delta{\underline{u}}\\\\
+        \Delta\dot{\underline{x}} &= \left[\frac{\partial f_{\mathrm{i}}}{\partial x_{\mathrm{j}}}\right]_{(\underline{x}^{*}, \underline{u}^{*})}\cdot\Delta{\underline{x}}+\left[\frac{\partial f_{\mathrm{i}}}{\partial u_{\mathrm{j}}}\right]_{(\underline{x}^{*},\underline{u}^{*})}\cdot\Delta{\underline{u}} \\   
         \Delta{\underline{y}} &= \left[\frac{\partial h_{\mathrm{i}}}{\partial x_{\mathrm{j}}}\right]_{(\underline{x}^{*}, \underline{u}^{*})}\cdot\Delta{\underline{x}}+\left[\frac{\partial h_{\mathrm{i}}}{\partial u_{\mathrm{j}}}\right]_{(\underline{x}^{*},\underline{u}^{*})}\cdot\Delta{\underline{u}}
     \end{split}
-    \label{eq:Gleichung14}
-\end{align}
-
-\subsubsection{Zustandsraummodell} \label{sec:Zustandsraummodell}
-
-Durch die Anwendung der Linearisierungsvorschrift aus \autoref{eq:Gleichung14} auf das Mittelwertmodell aus \autoref{sec:Nichtlinear} resultiert das linearisierte Zustandsraummodell zu
-
-\begin{align}
-    \begin{split}
-    \Delta\underline{\dot{x}} &= 
-    \begin{bmatrix}
-        \frac{1}{C}\cdot\frac{\partial i_{\mathrm{pv}}(x_{\mathrm{1}}, S, T_{\mathrm{c}})}{\partial x_{\mathrm{1}}}\big |_{x_{\mathrm{1}}^*} & -\frac{1}{C}\cdot u^* \\\\
-        \frac{1}{L}\cdot u^* & 0
-    \end{bmatrix} \cdot \Delta \underline{x} +
-    \begin{bmatrix}
-        -\frac{1}{C}\cdot x_{\mathrm{2}}^* \\\\
-        \frac{1}{L}\cdot x_{\mathrm{1}}^*
-    \end{bmatrix} \cdot
-    \Delta \underline{u}
-     \\\\
-    \Delta \underline{y} &= 
-    \begin{bmatrix}
-        1 & \quad 0 \\\\
-        0 & \quad 1
-    \end{bmatrix} \cdot \Delta \underline{x} + \underline{0} \cdot \Delta\underline{u}
-    \end{split}
-    \label{eq:Gleichung15}
 \end{align}
 \newline
-mit
+Um das linearisierte Zustandsraummodell zu erhalten, werden die einzelnen Gleichungen des nichtlinearen Zustandsraummodells aus \autoref{eq:Gleichung3.7} nach den Zuständen $x_{\mathrm{1}}$ bis $x_{\mathrm{4}}$, sowie dem Eingang $V_{\mathrm{m}}$ partiell abgeleitet und die Ruhelage $\underline{x}^{*}$ eingesetzt. Dabei werden sowohl die Ruhelage des hängenden Pendels (untere Ruhelage) und die des stehenden Pendels (obere Ruhelage) betrachtet. In \autoref{eq:Gleichung3.10} dargestellt ist die untere Ruhelage, mit Hilfe derer das lineare Zustandsraummodell für das hängende Pendel bestimmt werden kann. Anhand dessen kann das lineare Zustandsraummodell in Simulink mit dem nichtlinearen Zustandsraummodell im nachfolgenden Abschnitt (\autoref{sec:Vergleich}) verglichen werden.
 
-\begin{align*}
-    \Delta \underline{x} &= \underline{x} - \underline{x}_{\mathrm{c}} \\\\
-    \Delta \underline{u} &= \Delta \underline{d} = \underline{d}_{\mathrm{dyn}}-\underline{d}.
-\end{align*}
-\newline
-Die Terme $\underline{x}_{\mathrm{c}}$ und $\underline{d}$ gleichen den Ruhelagen aus \autoref{eq:Gleichung12} und $d = 0.8579$. Das vollständige \textbf{lineare Zustandsraummodell} ist in \autoref{eq:Gleichung16} dargestellt und folgt durch die Berechnungen der einzelnen Terme aus \autoref{eq:Gleichung15}.
-
-\begin{empheq}[box=\widefbox]{align}
+\begin{align}\label{eq:Gleichung3.10}
     \begin{split}
-        \Delta\underline{\dot{x}} &= 
+        \underline{x}_{\mathrm{1}}^{*}=
         \begin{bmatrix}
-            -150.4187 & -54.5419 \\\\
-            486.5101 & 0
-        \end{bmatrix} \cdot \Delta \underline{x} +
+            x_{\mathrm{1}}^{*} \\
+            x_{\mathrm{2}}^{*} \\
+            x_{\mathrm{3}}^{*} \\
+            x_{\mathrm{4}}^{*}
+        \end{bmatrix}=
         \begin{bmatrix}
-            -2.1763\cdot 10^5 \\\\
-            5.9499\cdot 10^5
-        \end{bmatrix} \cdot
-        \Delta \underline{u} \\\\
-        \Delta \underline{y} &= 
-        \begin{bmatrix}
-            1 & \quad 0 \\\\
-            0 & \quad 1
-        \end{bmatrix} \cdot \Delta \underline{x} + \underline{0} \cdot \Delta\underline{u}
+            \pi \\
+            0   \\
+            0   \\
+            0
+        \end{bmatrix}
     \end{split}
-    \label{eq:Gleichung16}
+\end{align}
+\newline
+Die Regelung, welche in \autoref{sec:Zustandsregler} entworfen wird soll dafür sorgen, dass das Pendel in der oberen Ruhelage verweilt. Diese wird beschrieben durch:
+
+\begin{align}\label{eq:Gleichung3.11}
+    \begin{split}
+        \underline{x}_{\mathrm{2}}^{*}=
+        \begin{bmatrix}
+            x_{\mathrm{1}}^{*} \\
+            x_{\mathrm{2}}^{*} \\
+            x_{\mathrm{3}}^{*} \\
+            x_{\mathrm{4}}^{*}
+        \end{bmatrix}=
+        \begin{bmatrix}
+            0 \\
+            0 \\
+            0 \\
+            0
+        \end{bmatrix}
+    \end{split}
+\end{align}
+\newline
+Die allgemeine Form des \textbf{linearen Zustandsraummodells} lautet:
+
+\begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung3.12}
+    \begin{split}
+        \dot{\underline{x}} &= \underline{A}\cdot\underline{x}+\underline{B}\cdot\underline{u} \\
+        \underline{y} &= \underline{C}\cdot\underline{x}+\underline{D}\cdot\underline{u}
+    \end{split}
+\end{empheq}
+\newline
+Wendet man nun die Linearisierungsvorschrift aus \autoref{eq:Gleichung3.9} unter Nutzung der Ruhelagen an, so erhält man das konkrete linearisierte Zustandsraummodell für das System. In \autoref{eq:Gleichung3.13} ist das linearisierte Zustandsraummodell für die obere Ruhelage und in \autoref{eq:Gleichung3.14} das für die untere Ruhelage dargestellt.
+
+\begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung3.13}
+    \begin{split}
+        \Delta{\dot{\underline{x}}}&=
+        \begin{bmatrix}
+            0           & 1         & 0 & 0         \\
+            -50.9760    & -1.2328   & 0 & 0.1960    \\
+            0           & 0         & 0 & 1         \\
+            50.9760     & 1.2328    & 0 & -11.3323
+        \end{bmatrix}\cdot\Delta\underline{x}+
+        \begin{bmatrix}
+            0       \\
+            -1.9548 \\
+            0       \\
+            113.0101
+        \end{bmatrix}\cdot V_{\mathrm{m}}
+        \\
+        \Delta{\underline{y}} &=
+        \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0
+        \end{bmatrix}\cdot\Delta\underline{x}+\underline{0}\cdot V_{\mathrm{m}}
+    \end{split}
 \end{empheq}
 
-\subsubsection{Überprüfung der Steuerbarkeit} \label{sec:Ueberpruefung_der_Steuerbarkeit}
-
-Zur Überprüfung der Steuerbarkeit wird im ersten Schritt die \textbf{Steuerbarkeitsmatrix} $Q_{\mathrm{s}}$ nach der Vorschrift aus \autoref{eq:Gleichung17} berechnet
-
-\begin{align}
-    \underline{Q}_{\mathrm{s}} &= \left(\underline{B} \quad \underline{A}\cdot\underline{B} \quad ... \quad \underline{A}^{(n-1)}\cdot\underline{B}\right)
-    \label{eq:Gleichung17}
-\end{align}
-\newline
-und ergibt sich zu
-
-\begin{align}
-    \underline{Q}_{\mathrm{s}} &=
-    \begin{bmatrix}
-        -0.0022\cdot 10^8 & 0.0028\cdot 10^8 \\\\
-        0.0059\cdot 10^8 & -1.0588\cdot 10^8
-    \end{bmatrix}.
-    \label{eq:Gleichung18}
-\end{align}
-\newline
-Im Anschluss erfolgt die Berechnung der Determinante (für quadratische Matrizen) \bzw des Rangs (für nicht-quadratische Matrizen). Da die Matrix quadratisch ist, ist die \textbf{Determinante} maßgebend und muss ungleich Null sein.
-
-\begin{equation*}
-    \boxed{\underline{\underline{det(\underline{Q}_{\mathrm{s}})}} = \underline{\underline{ 2.2873\cdot 10^{13}}}}
-\end{equation*}
-\newline
-Das System ist steuerbar, da gilt: $det(\underline{Q}_{\mathrm{s}}) \neq 0$.
+\begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung3.14}
+    \begin{split}
+        \Delta{\dot{\underline{x}}}&=
+        \begin{bmatrix}
+            0           & 1         & 0 & 0         \\
+            50.9760     & -1.2328   & 0 & 0.1960    \\
+            0           & 0         & 0 & 1         \\
+            -50.9760    & 1.2328    & 0 & -11.3323
+        \end{bmatrix}\cdot\Delta\underline{x}+
+        \begin{bmatrix}
+            0       \\
+            -1.9548 \\
+            0       \\
+            113.0101
+        \end{bmatrix}\cdot V_{\mathrm{m}}
+        \\
+        \Delta{\underline{y}} &=
+        \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0
+        \end{bmatrix}\cdot\Delta\underline{x}+\underline{0}\cdot V_{\mathrm{m}}
+    \end{split}
+\end{empheq}

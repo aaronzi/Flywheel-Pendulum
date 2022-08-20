@@ -54,6 +54,7 @@
 
 % Mathe Pakete
 \usepackage{amsmath}
+\numberwithin{equation}{section}
 \DeclareMathOperator{\sgn}{sgn}
 \usepackage{thmtools}
 \usepackage{amsfonts}
@@ -61,6 +62,7 @@
 \usepackage{mathtools}
 \usepackage{breqn}
 \usepackage{empheq}
+\usepackage{xfrac}
 
 % Listenumgebungen
 \usepackage{listings}
@@ -94,6 +96,7 @@
 \usepackage{float}
 \usepackage{multirow}
 \usepackage{makecell}
+\numberwithin{table}{section}
 % \setlength{\tabcolsep}{0.5em}       % for the horizontal padding
 % {\renewcommand{\arraystretch}{1.8}  % for the vertical padding
 % \usepackage{ragged2e}
@@ -117,6 +120,7 @@
 \usepackage{subcaption}
 \usepackage{rotating}
 \usepackage{lscape}
+\numberwithin{figure}{section}
 % \captionsetup[subfigure]{list=true, font=normalsize, labelformat=brace, position=top} %setup für subfigure captions
 
 % Diagramm-/Grafikerstellung
@@ -209,12 +213,14 @@
 %--------------------------------------------------------------------------
 \newcommand*\widefbox[1]{\fbox{\hspace{1em}#1\hspace{1em}}} % Box für align-Umgebung
 
+\newcommand{\mycomment}[1]{} % zum Auskommentieren von Tex-Blöcken
+
 %------------sectioning command-------------------
 % The sectioning command one level down the hierarchy from \subsubsection is called \paragraph followed by \subparagraph
 % to include this in your table of contents
 
 % Tiefe des Inhaltsverzeichnis
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{4}
 
 % Abkürzungen durch Kommandos setzen
@@ -281,7 +287,7 @@
 % \setlength{\evensidemargin}{2cm}
 
 %----------Kopf & Fußzeile------------------------
-% \usepackage[headsepline,footsepline]{scrpage2}
+% \usepackage[headsepline,footsepline]{scrlayer-scrpage}
 \usepackage[headsepline]{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \clearpairofpagestyles
@@ -289,9 +295,28 @@
 \automark{section}
 \chead{}
 \ohead{\includegraphics[scale=0.09]{Bilder/HTWLogoKopfzeile.png} \nocite{HTWklein}}
-\ifoot{Richter, Zielstorff\\ Laarsen, Schmiedehausen}
 \cfoot{\pagemark}
 \ofoot{M2 Modellbildung/\\ Simulation}
+
+% Aaron Page Style
+\newpairofpagestyles[scrheadings]{aaron}{%
+    \ifoot{Aaron\\ Zielstorff}
+}
+
+% Sebastian Page Style
+\newpairofpagestyles[scrheadings]{sebastian}{%
+    \ifoot{Sebastian\\ Richter}
+}
+
+% Milan Page Style
+\newpairofpagestyles[scrheadings]{milan}{%
+    \ifoot{Milan\\ Larsen}
+}
+
+% Cyrill Page Style
+\newpairofpagestyles[scrheadings]{cyrill}{%
+    \ifoot{Cyrill\\ Schmiedehausen}
+}
 
 %--------------------------------------------------------------------------
 % Beginn des Dokuments
@@ -318,9 +343,9 @@
 
    % Name
    \begin{flushleft}
-      \begin{tabular}{l c l }
+      \begin{tabular}{l c l}
          \textbf{Name: }&\hspace{1 cm} &\textbf{Matrikelnummer:} \\
-         Milan Laarsen          & & 581929 \\
+         Milan Larsen           & & 581929 \\
          Sebastian Richter      & & 572906 \\
          Cyrill Schmiedehausen  & & XXXXXX \\
          Aaron Zielstorff       & & 567183 \\
@@ -336,7 +361,7 @@
       \textbf{Fachsemester:}  & 2.\xspace FS                                            \\
       \textbf{Fach:}          & M2 Modellbildung/Simulation                             \\
       \textbf{Dozent:}        & Prof.\xspace Dr.\xspace -Ing.\xspace Steffen Borchers   \\
-      \textbf{Abgabe am:}     & 26.\xspace August 2022                                  \\ 
+      \textbf{Abgabe am:}     & 23.\xspace September 2022                               \\ 
    \end{tabular}
 \end{titlepage}
 \clearpage
@@ -364,22 +389,27 @@
 
 %---------Kapitel/Text----------------------------
 
-%\include{1_einfuehrung}
+\include{1_einfuehrung}
 
-%\include{2_modellierung}
+\include{2_modellierung}
 
-%\include{3_zustandsraummodell}
+\include{3_zustandsraummodell}
 
-%\include{4_vergleich}
+\include{4_vergleich}
 
-%\include{5_zustandsreglerentwurf}
+\include{5_sensitivitaetsanalyse}
 
-%\include{6_reglervalidierung}
+\include{6_aufschwingen}
 
-%\include{7_ausblick}
+\include{7_zustandsregler}
+
+\include{8_beobachterentwurf}
+
+\include{9_ausblick}
 
 %---------Quellen---------------------------------
 \newpage
+\pagestyle{scrheadings}
 \newcount\Quellennummer
 \Quellennummer=1
 

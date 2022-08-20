@@ -1,5 +1,7 @@
+\pagestyle{milan}
 \section{Ausblick} \label{sec:ausblick}
 
+\mycomment{
 Wie bereits in \autoref{sec:Reglervalidierung} aufgefallen ist, schwingt das System sehr stark bei Reglern mit einfacher Zustandsrückführung und Zustandsreglern mit Referenzwertvorsteuerung. Grund dafür ist der Betrag des Imaginärteils der Polstellen, welcher um ein Vielfaches größer ist als der Betrag des Realteils. Um den Imaginärteil zu verkleiner besteht die Möglichkeit die Polregion über LMI's weiter einzuschränken. Der aktuelle Ansatz nutzt lediglich eine Einschränkung über die Vorgabe eines $\alpha$-Wertes, um die Polstellen links einer vorgegebenen Position auf der Real-Achse zu platzieren. Dies zwingt das System in einen stabilen Zustand.\\
 Das bisherige LMI könnte über zusätzliche Vorgaben erweitert werden, um die Polregion zu verkleinern \bzw zu optimieren. Dazu wird ein Parameter $r$ für die Auslegung eines Kreisradius um den Koordinatenursprung eingeführt sowie ein $\theta$, um einen Sektor links der Imaginärachse über die Wahl eines Winkels festzulegen. Die sich ergebende Polregion ist in \autoref{fig:Bild27} dargestellt.\\
 
@@ -51,3 +53,4 @@ Die Formulierung der erweiterten LMI's ist nachfolgend dargestellt:\\
 \end{align*}
 \newline
 Wird durch die Referenzwertvorsteuerung eine Spannung angesteuert, welche signifikant von der Ruhelage abweicht, reicht die Performance der Regler nicht aus, um das System vernünftig zu stabilisieren. Hierzu ist es sinnvoll einen Gain-Scheduling Regler zu implementieren, welcher die Verstärkungsfaktoren als Funktion des Arbeitspunktes betrachtet und regelt. Die Reglerstruktur des Systems wird dadurch dynamischer und einsatzfähiger.
+}

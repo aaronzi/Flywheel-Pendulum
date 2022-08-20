@@ -1,87 +1,144 @@
-\section{Modellierung des Buck-Converters} \label{sec:Modellierung}
+\pagestyle{aaron}
+\section{Modellierung des Schwungrad-Pendels} \label{sec:Modellierung}
 
-\subsection{Ströme} \label{sec:Stroeme}
+Der folgende Abschnitt beschäftigt sich mit der Modellierung des Schwungrad-Pendels inklusive des treibenden Gleichstrommotors.
 
-Zur Modellierung des Ausgangsstroms einer PV-Anlage sind Kenntnisse über die einzelnen Anlagenströme notwendig. Zur ersten Betrachtung wird der \textbf{Strom einer einzelnen Zelle} dargelegt. Dieser berechnet sich zu
+\subsection{Modellierung des Gleichstrommotors}
 
-\begin{align}
-    i_{\mathrm{pv,z}}(v_{\mathrm{pv,z}}, S, T_{\mathrm{c}}) &= i_{\mathrm{ph}}(S, T_{\mathrm{c}}) - i_{\mathrm{d}}(v_{\mathrm{pv,z}}, S, T_{\mathrm{c}}) - \frac{v_{\mathrm{pv,z}}}{R_{\mathrm{h}}}
-    \label{eq:Gleichung2}
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=0.6\textwidth]{Bilder/2. modellierung/Ersatzschaltbild.pdf}}
+    \caption[Ersatzschaltbild Gleichstrommotor]{Ersatzschaltbild des Gleichstrommotors am Schwungrad-Pendel}
+    \label{fig:Bild2.1}
+\end{figure}
+
+\autoref{fig:Bild2.1} zeigt das Ersatzschaltbild des Gleichstrommotors am Schwungrad-Pendel. Das zweite Kirchhoff'sche Gesetzt ergibt folgende Gleichung:
+
+\begin{equation} \label{eq:Gleichung2.1}
+    V_{\mathrm{m}} = i_{\mathrm{a}} R_{\mathrm{a}} + L_{\mathrm{a}} \frac{di_{\mathrm{a}}}{dt} + E_{\mathrm{b}}
+\end{equation}
+\newline
+Die gegenelektromotorische Kraft (EMK) hängt von der Winkelgeschwindigkeit $\dot\varphi$ und der Gegen-EMK-Konstante $K_{\mathrm{b}}$ wie folgt ab:
+
+\begin{equation} \label{eq:Gleichung2.2}
+    E_{\mathrm{b}} = K_{\mathrm{b}} \dot\varphi
+\end{equation}
+\newline
+Angenommen die Wirkung der Induktivität ist sehr klein ($L_{\mathrm{a}} \ll R_{\mathrm{a}}$), \autoref{eq:Gleichung2.1} ergibt sich zu
+
+\begin{equation} \label{eq:Gleichung2.3}
+    i_{\mathrm{a}} = \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}}.
+\end{equation}
+\newline
+Das Motordremoment $\tau$ ist mit dem Ankerstrom $i_{\mathrm{a}}$ durch eine Motordrehmomentkonstante $K_{\mathrm{t}}$ verbunden. Die Modellgleichung des Gleichstrommotors ergibt sich somit zu:
+
+\begin{equation} \label{eq:Gleichung2.4}
+    \boxed{\tau = K_{\mathrm{t}} i_{\mathrm{a}} = K_{\mathrm{t}} \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}}}
+\end{equation}
+
+\subsection{Modellierung des Schwungrad-Pendels}
+
+Zur Modellierung des Pendels wurde der Langrange-Ansatz gewählt, um die Bewegungsgleichungen des Pendels herzuleiten.
+ 
+\subsubsection{Lagrange Ansatz}
+
+Die nachfolgende Gleichung zeigt den \textbf{Lagrange Ansatz} unter Berücksichtigung der \textbf{dissipativen Funktion}. Diese besagt in Erweiterung zu der Lagrange-Formulierung, dass Energie in einem Vorgang in Wärme umgewandelt wird. Mit Hilfe der dissipativen Funktion können \textbf{Reibungsverluste} bei der Energiemethode nach Lagrange berücksichtigt werden.
+\begin{equation} \label{eq:Gleichung2.5}
+    \boxed{\frac{d}{dt} \left(\frac{\partial L}{\partial \dot{q_{\mathrm{i}}}}\right) - \frac{\partial L}{\partial q_{\mathrm{i}}} + \frac{\partial D}{\partial \dot{q_{\mathrm{i}}}} = 0}
+\end{equation}
+
+\subsubsection{Freiheitsgrade und Zwangsbedingungen}
+
+In \autoref{fig:Bild1.1} sind zwei Teilchen \bzw Massepunkte im $\mathbb{R}^2$ zu erkennen. Zum Einen die des Pendels und zum Anderen die des Schwungrades. Somit gilt grundsätzlich:
+
+\begin{itemize}
+    \item 2 Punkte: 4 Freiheitsgrade (FHG)
+\end{itemize}
+
+Das Schwungrad-Pendel besitzt jedoch auch zwei Zwangsbedingungen, die wie folgt formuliert werden können:
+
+\begin{itemize}
+    \item Das Pendel kann nur um die 0z-Achse rotieren: \\ $z = 0$
+    \item Die Masse $m_2$ ist über des Pendel mit dem Aufhängepunkt 0 gekoppelt: \\ $(y_{\mathrm{m_1}} - y_{\mathrm{m_2}})^2 + (x_{\mathrm{m_1}} - x_{\mathrm{m_2}})^2 = l_2^2$
+\end{itemize}
+
+Beide Zwangsbedingungen sind holonom-skleronom, da sie als Gleichungen zwischen zwei Koordinaten angegeben werden können und nicht von der Zeit abhängig sind.
+
+Somit bleiben am Ende noch zwei Freiheitsgrade (FHG) übrig.
+
+\subsubsection{Generalisierte Koordinaten}
+
+Aus den verbliebenen Freiheitsgraden werden die generalisierten Koordinaten abgeleitet. Dabei gilt grundsätzlich folgender Zusammenhang im $\mathbb{R}^2$:
+
+\begin{equation} \label{eq:Gleichung2.6}
+    \boxed{S = 2n - k}
+\end{equation}
+\newline
+mit $S$ als Anzahl der Freiheitsgrade und somit auch der Anzahl der generalisierten Koordinaten, $n$ der Anzahl der Teilchen und $k$ der Anzahl der holonomen Zwangsbedingungen.\\
+Die beiden Generalisierten Koordinaten sind somit:
+
+\begin{itemize}
+    \item $q_{\mathrm{1}} = \theta$
+    \item $q_{\mathrm{2}} = \varphi$
+\end{itemize}
+
+\subsubsection{Berechnung der kinetischen und potentiellen Energie}
+
+Für die Lagrange-Formulierung werden die kinetische und die potentielle Energie des Systems benötigt. Die kinetische Energie setzt sich zusammen aus der translatorischen kinetischen Energie $E_{\mathrm{kin,trans}}$ und der rotatorischen kinetischen Energie $E_{\mathrm{kin,rot}}$. Die Gleichungen sind nachfolgend aufgestellt.
+
+\begin{align} \label{eq:Gleichung2.7}
+    \begin{split}
+        E_{\mathrm{kin,trans}} &= \frac{1}{2} m_1 (l_1\dot\theta)^2 + \frac{1}{2}m_2 (l_2\dot\theta)^2 \\
+        E_{\mathrm{kin,rot}} &= \frac{1}{2} J_1 (\dot\theta)^2 + \frac{1}{2} J_2 (\dot\theta + \dot\varphi)^2
+    \end{split}
 \end{align}
 \newline
-mit Strom $i_{\mathrm{ph}}$ unter Berücksichtigung der äußeren Bestrahlung dargestellt in nachfolgender Gleichung:
+Die gesamte \textbf{kinetische Energie des Systems} ist somit:
 
-\begin{align*}
-    i_{\mathrm{ph}}(S, T_{\mathrm{c}}) &= \cfrac{S}{S_{\mathrm{STC}}}\cdot i_{\mathrm{ph,sc,STC}}\cdot\left(1+\alpha_{\mathrm{T}}\cdot\left(T_{\mathrm{c}}-T_{\mathrm{c,STC}}\right)\right)
-\end{align*}
-\newline
-Der \textbf{Sättigungsstrom} $i_{\mathrm{s}}$ des Dioden-Diffusionseffekts wird berechnet über
-
-\begin{align*}
-    i_{\mathrm{s}}(S, T_{\mathrm{c}}) &= \cfrac{i_{\mathrm{ph}}(S, T_{\mathrm{c}})-\cfrac{v_{\mathrm{oc}}(T_{\mathrm{c}})}{R_{\mathrm{h}}}}{e^{\cfrac{v_{\mathrm{oc}}(T_{\mathrm{c}})}{A_{\mathrm{n}}\cdot v_{\mathrm{T,STC}}}}-1}
-\end{align*}
-\newline
-und wird eingesetzt in die Formel zum \textbf{Diodenstrom} $i_{\mathrm{d}}$:
-
-\begin{align*}
-    i_{\mathrm{d}}(v_{\mathrm{pv,z}}, S, T_{\mathrm{c}}) &= i_{\mathrm{s}}(S, T_{\mathrm{c}})\cdot \left(e^{\cfrac{v_{\mathrm{pv,z}}}{A_{\mathrm{n}}\cdot v_{\mathrm{T,STC}}}}-1\right)
-\end{align*}
-\newline
-Weiterhin errechnet sich die \textbf{thermische Leerlaufspannung} $v_{\mathrm{oc}}$ pro Zelle über
-
-\begin{align*}
-    v_{\mathrm{oc}}(T_{\mathrm{c}}) &= v_{\mathrm{oc,STC}}\cdot\left(1+\beta_{\mathrm{T}}\cdot\left(T_{\mathrm{c}}-T_{\mathrm{c,STC}}\right)\right).
-\end{align*}
-\newline
-Durch das Einsetzen der vorangegangenen Gleichungen in \autoref{eq:Gleichung2} folgt für den \textbf{Strom einer Zelle} zu
-
-\begin{empheq}[box=\widefbox]{align}
-    i_{\mathrm{pv,z}}(v_{\mathrm{pv,z}}, S, T_{\mathrm{c}}) &= i_{\mathrm{ph}}(S, T_{\mathrm{c}})-i_{\mathrm{s}}(S, T_{\mathrm{c}})\cdot\left(e^{\cfrac{v_{\mathrm{pv,z}}}{A_{\mathrm{n}}\cdot v_{\mathrm{T,STC}}}}-1\right)-\cfrac{v_{\mathrm{pv,z}}}{R_{\mathrm{h}}}.
-    \label{eq:Gleichung3}
+\begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung2.8}
+    \begin{split}
+        E_{\mathrm{kin}} &= E_{\mathrm{kin,trans}} + E_{\mathrm{kin,rot}} \\
+        E_{\mathrm{kin}} &= \frac{1}{2} \left( m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2 \right) \dot\theta^2 + J_2\dot\theta\dot\varphi + \frac{1}{2} J_2 \dot\varphi^2
+    \end{split}
 \end{empheq}
 \newline
-Um Stromgleichungen für eine PV-Anlage bestehend aus mehreren Modulen zu motivieren, werden die Anzahl der \textbf{seriellen und parallelen Zellen} pro Modul mit der Anzahl der seriellen und parallelen Module multipliziert.
+Der Ursprung der potentiellen Energie liegt bei Null. Somit ergibt sich die \textbf{potentielle Energie des Systems} zu:
 
-\begin{align*}
-    N_{\mathrm{s}} &= N_{\mathrm{cell,s}}\cdot N_{\mathrm{mod,s}} \\ \nonumber \\
-    N_{\mathrm{p}} &= N_{\mathrm{cell,p}}\cdot N_{\mathrm{mod,p}}
-\end{align*}
-\newline
-Aus der Erkenntnis der vorangegangenen zwei Gleichungen resultiert für \textbf{Strom und Spannung der PV-Anlage}:
+\begin{equation} \label{eq:Gleichung2.9}
+    \boxed{E_{\mathrm{pot}} = \left( m_1 l_1 + m_2 l_2 \right) g\cos (\theta)}
+\end{equation}
 
-\begin{align*}
-    i_{\mathrm{pv}} &= N_{\mathrm{p}}\cdot i_{\mathrm{pv,z}} \\ \nonumber \\
-    v_{\mathrm{pv}} &= N_{\mathrm{s}}\cdot v_{\mathrm{pv,z}}
-\end{align*}
-\newline
-Durch das Einfügen der Zusammenhänge in \autoref{eq:Gleichung3} resultiert der \textbf{Gesamtstrom der PV-Anlage} zu:
+\subsubsection{Herleitung der Bewegungsgleichungen}
 
-\begin{empheq}[box=\widefbox]{align}
-    i_{\mathrm{pv}}(v_{\mathrm{pv}}, S, T_{\mathrm{c}}) &= N_{\mathrm{p}}\cdot i_{\mathrm{ph}}(S, T_{\mathrm{c}})-N_{\mathrm{p}}\cdot i_{\mathrm{s}}(S, T_{\mathrm{c}})\cdot\left(e^{\cfrac{v_{\mathrm{pv}}}{N_{\mathrm{s}}\cdot A_{\mathrm{n}}\cdot v_{\mathrm{T,STC}}}}-1\right)-\cfrac{N_{\mathrm{p}}\cdot v_{\mathrm{pv}}}{N_{\mathrm{s}}\cdot R_{\mathrm{h}}}
-    \label{eq:Gleichung4}
+Die \textbf{Lagrange-Funktion} $L$ wird aus der Differenz der kinetischen Energie aus \autoref{eq:Gleichung2.8} und der potentiellen Energie aus \autoref{eq:Gleichung2.9} berechnet.
+
+\begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung2.10}
+    \begin{split}
+        L &= E_{\mathrm{kin}} - E_{\mathrm{pot}} \\
+        L &= \frac{1}{2} \left( m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2 \right) \dot\theta^2 + J_2\dot\theta\dot\varphi + \frac{1}{2} J_2 \dot\varphi^2 - \left( m_1 l_1 + m_2 l_2 \right) g\cos (\theta)
+    \end{split}
 \end{empheq}
 \newline
-Die Parameter $S$ (Eingangsstrahlung), $T_{\mathrm{c}}$ (Temperatur der Zellen) und $v_{\mathrm{pv}}$ (PV-Spannung) werden im späteren Verlauf spezifiziert und zur Berechnung herangezogen.
+Die \textbf{dissipative Energie} $D$ ist:
 
-\subsection{Induktivitäten und Kapazitäten} \label{sec:Induktivitaten_und_Kapazitaeten}
-
-Zur Auslegung der Induktivitäten und Kapazitäten des Buck-Converters am MPP werden der Duty Cycle ($d$), die Schaltfrequenz ($f_{\mathrm{SW}}$), der Strom ($i_{\mathrm{PV,MPP}}$) und die Spannung ($v_{\mathrm{PV,MPP}}$) als bekannt vorausgesetzt. Im ersten Schritt werden die \textbf{maximal zulässigen Strom- und Spannungsschwankungen an den Bauteilen} berechnet. Dabei wird eine Schwankung von $\pm$ 0.5 $\%$ zugelassen.
-
-\begin{align*}
-    \Delta i_{\mathrm{L}} &= 0.005 \cdot i_{\mathrm{PV,MPP}} \\\\
-    \Delta v_{\mathrm{PV}} &= 0.005 \cdot v_{\mathrm{PV,MPP}}
-\end{align*}
+\begin{equation} \label{eq:Gleichung2.11}
+    \boxed{D = \frac{1}{2} c_1 \dot\theta^2 + \frac{1}{2} c_2 \dot\varphi^2}
+\end{equation}
 \newline
-Zur Berechnung der \textbf{Induktivität ($L$)} und der \textbf{Kapazität ($C$)} werden \autoref{eq:Gleichung5} und \autoref{eq:Gleichung6} angewendet.
+Zieht man nun den Ansatz aus \autoref{eq:Gleichung2.5} heran und wendet diesen für die generalisierte Koordinate $\theta$ an, so erhält man die \textbf{Bewegungsgleichung des Schwungrades}:
 
-\begin{align}
-    L &= \cfrac{v_{\mathrm{DC}}\cdot(1-d)}{\Delta i_{\mathrm{L}}\cdot f_{\mathrm{sw}}} \label{eq:Gleichung5}\\ \nonumber \\
-    C &= \cfrac{i_{\mathrm{PV,MPP}}\cdot(1-d)}{\Delta v_{\mathrm{PV}}\cdot f_{\mathrm{sw}}} \label{eq:Gleichung6}
-\end{align}
+\begin{equation} \label{eq:Gleichung2.12}
+    \boxed{\left( m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2\right) \ddot\theta + J_2\ddot\varphi + c_1\dot\theta - \left( m_1 l_1 + m_2 l_2 \right) g\sin (\theta) = 0}
+\end{equation}
 \newline
-Die für die Simulation angesetzten Bauteilgrößen resultieren zu
+Ebenfalls der Gleiche Ansatz wird nun für die generalisierte Koordinate $\varphi$ angewendet:
 
-\begin{empheq}[box=\widefbox]{align}
-     \underline{\underline{L}} &= \cfrac{900V\cdot(1-0.8579)}{0.005\cdot 2902.13A\cdot 5kHz} \approx \underline{\underline{1.76mH}} \label{eq:Gleichung7} \\ \nonumber \\
-     \underline{\underline{C}} &= \cfrac{2902.13A\cdot (1-0.8579)}{0.005\cdot 1049.13V\cdot 5kHz} \approx \underline{\underline{15.7mF}}. \label{eq:Gleichung8}
-\end{empheq}
+\begin{equation} \label{eq:Gleichung2.13}
+    J_2 \left( \ddot\theta + \ddot\varphi \right) + c_2 \dot\varphi = \tau
+\end{equation}
+\newline
+Setzt man nun \autoref{eq:Gleichung2.4} in \autoref{eq:Gleichung2.13} ein erhält man die \textbf{Bewegungsgleichung des Pendels}:
+
+\begin{equation} \label{eq:Gleichung2.14}
+    \boxed{J_2 \left( \ddot\theta + \ddot\varphi \right) + c_2 \dot\varphi = K_{\mathrm{t}} i_{\mathrm{a}} = K_{\mathrm{t}} \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}}}
+\end{equation}

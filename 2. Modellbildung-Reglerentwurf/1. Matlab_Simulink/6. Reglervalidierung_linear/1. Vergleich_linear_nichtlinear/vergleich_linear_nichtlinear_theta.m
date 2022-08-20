@@ -5,7 +5,7 @@ function vergleich_linear_nichtlinear_theta()
     % SIMULATIONSDATEN
     assignin('base','V_m',0);
     assignin('base','V_m_dyn',0);
-    assignin('base','start_deg',-60);
+    assignin('base','start_deg',-10);
 
     % PFAD DER SIMULATION 
     simOut = sim('Vergleich_linear_nichtlinear','StartTime','0','StopTime','5','FixedStep','1/1e4');
@@ -14,7 +14,7 @@ function vergleich_linear_nichtlinear_theta()
     vec_theta_nichtlinear = simOut.y_nichtlinear.Data;
 
     % LINEAR
-    vec_theta_linear = simOut.y_linear.Data;
+    vec_theta_linear = simOut.y_linear.Data(:,1);
 
     % ZEITVEKTOR
     t_vec = simOut.tout;
