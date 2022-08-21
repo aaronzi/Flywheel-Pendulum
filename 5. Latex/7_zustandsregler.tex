@@ -71,10 +71,43 @@ Das allgemeine \textbf{Reglergesetz} für die Zustandsrückführung ist nachfolg
 \end{empheq}
 
 \begin{figure}[H]
-   \centering
-   \fbox{\includegraphics[width=0.4\textwidth]{Bilder/5. Zustandsregler/Einfache_Zustandsrueckfuehrung.pdf}}
-   \caption[Systemstruktur mit einfacher Zustandsrückführung]{Systemstruktur mit einfacher Zustandsrückführung}
-   \label{fig:Bild7.1}
+    \centering
+    \begin{tikzpicture}[framed][domain=0:0]
+        % Umgebung
+        \draw[thin,color=black] (-1,0);
+        % Rechteck - Strecke
+        \node at (3,0) [rectangle, draw, very thick] (strecke) {\Large Strecke};
+        % Pfeil \underline{y}
+        \draw[-{Implies}, double, very thick] (4.03,0) -- (4.7,0);
+        % \underline{y}
+        \node[text width=1cm] at (4.7, 0.3) {$\underline{y}$};
+        % Rechteck - \underline{K}
+        \node at (1.8,-3) [rectangle, draw, very thick] (k) {\Large $-\underline{K}$};
+        % Pfeil \underline{x}
+        \draw[double, very thick] (3.5,-0.37) -- (3.5,-2.99);
+        \draw[-{Implies}, double, very thick] (3.46,-3) -- (2.45,-3);
+        % Fix der Biegung des Pfeils für \underline{x}
+        \draw[very thick] (3.46,-3.032) -- (3.55,-3.032);
+        \draw[very thick] (3.532,-3.03) -- (3.532,-2.98);
+        % \underline{x}
+        \node[text width=1cm] at (4.2, -1.6) {$\underline{x}$};
+        % Pfeil \underline{u}
+        \draw[double, very thick] (1.13,-3) -- (0.265,-3);
+        \draw[double, very thick] (0.25,-2.95) -- (0.2,-0.013);
+        \draw[-{Implies}, double, very thick] (0.25,0) -- (1.98,0);
+        % Fix der Biegung des Pfeils für \underline{x}
+        \draw[very thick] (0.265,-3.032) -- (0.2,-3.032);
+        \draw[very thick] (0.217,-3.032) -- (0.217,-2.95);
+        \draw[very thick] (0.168,-0.02) -- (0.168,0.051);
+        \draw[very thick] (0.168,0.032) -- (0.27,0.032);
+        % \underline{x}
+        \node[text width=1cm] at (0.27, -1.6) {$\underline{u}$};
+        % Rechteck - Regler (grün)
+        \draw [rectangle, draw, very thick, green, dashed] (0.7,-2.4) rectangle (3,-3.6);
+        \node[text width=1cm, green] at (1.8, -4) {Regler};
+    \end{tikzpicture}
+    \caption[Systemstruktur mit einfacher Zustandsrückführung]{Systemstruktur mit einfacher Zustandsrückführung}
+    \label{fig:Bild7.1}
 \end{figure}
 
 \subsubsection{Lineare Matrixungleichungen}
@@ -223,7 +256,7 @@ Um eine geeignete Reglerstruktur zu entwerfen, werden zuerst die \textbf{Polstel
 
 \begin{figure}[H]
    \centering
-   \fbox{\includegraphics[width=0.8\textwidth]{Bilder/5. Zustandsregler/Polstellen_der_Systemmatrix.pdf}}
+   \fbox{\includegraphics[width=0.8\textwidth]{Bilder/7_zustandsregler/Polstellen_der_Systemmatrix.pdf}}
    \caption[Polstellen der Systemmatrix]{Polstellen der Systemmatrix}
    \label{fig:Bild7.4}
 \end{figure}
@@ -232,7 +265,7 @@ Der zu entwerfender Regler muss in der Lage sein, die maximal zulässige Eingang
 
 \begin{figure}[H]
    \centering
-   \fbox{\includegraphics[width=0.95\textwidth]{Bilder/5. Zustandsregler/Reglerstruktur_Simulink.pdf}}
+   \fbox{\includegraphics[width=0.95\textwidth]{Bilder/7_zustandsregler/Reglerstruktur_Simulink.pdf}}
    \caption[Simulink-Reglerstruktur]{Simulink-Reglerstruktur}
    \label{fig:Bild7.5}
 \end{figure}
@@ -391,7 +424,7 @@ Die Polstellen des geschlossenen Regelkreises sind nachfolgend aufgelistet und i
 
 \begin{figure}[H]
    \centering
-   \fbox{\includegraphics[width=0.8\textwidth]{Bilder/5. Zustandsregler/Vergleich_der_Polstellenlagen.pdf}}
+   \fbox{\includegraphics[width=0.8\textwidth]{Bilder/7_zustandsregler/Vergleich_der_Polstellenlagen.pdf}}
    \caption[Polstellenlagen der Systemmatrix und des geschlossenen Regelkreises]{Vergleich der Polstellenlagen der Systemmatrix A und des geschlossenen Regelkreises}
    \label{fig:Bild7.6}
 \end{figure}
@@ -400,7 +433,7 @@ Der geschlossene Regelkreis weist nur Polstellen mit einem Realteil kleiner Null
 
 \begin{figure}[H]
    \centering
-   \fbox{\includegraphics[width=0.95\textwidth]{Bilder/5. Zustandsregler/Validierung_des_Reglers.pdf}}
+   \fbox{\includegraphics[width=0.95\textwidth]{Bilder/7_zustandsregler/Validierung_des_Reglers.pdf}}
    \caption[Relevante Kurvenverläufe zur Validierung des Reglers]{Relevante Kurvenverläufe zur Validierung des Reglers}
    \label{fig:Bild7.7}
 \end{figure}
@@ -412,7 +445,7 @@ Bei der Anwendung des linearen Reglers am nichtlinearen Modell werden die erweit
 
 \begin{figure}[H]
    \centering
-   \fbox{\includegraphics[width=0.95\textwidth]{Bilder/5. Zustandsregler/Anwendung_des_Reglers.pdf}}
+   \fbox{\includegraphics[width=0.95\textwidth]{Bilder/7_zustandsregler/Anwendung_des_Reglers.pdf}}
    \caption[Relevante Kurvenverläufe zur Anwendung des Reglers]{Relevante Kurvenverläufe zur Anwendung des Reglers}
    \label{fig:Bild7.8}
 \end{figure}
