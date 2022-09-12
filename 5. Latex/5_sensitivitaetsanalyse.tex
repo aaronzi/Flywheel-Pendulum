@@ -1,2 +1,31 @@
 \pagestyle{milan}
 \section{Sensitivitätsanalyse der Modellparameter} \label{sec:sesitivitaetsanalyse}
+In diesem Abschnitt wird eine Parameter- und Sensivitätsanalysise durchgeführt. 
+Es wird dabei die Auswirkung von der Varianz von bestimmten Modellparametern auf die Varianz der Ausgangsparameter untersucht.
+
+Ziel der Sensitivitätsanalyse ist es, wichtige Parameter zu identifizieren und daraus eine Optimierung der Parameter zu ermitteln.
+
+Das Ergebniss der Sensitivitätsanalyse dient zum weiterne Verständnis des mathematischen Modelles bzw. dem zugrundeliegenden Simulationsmodell.
+\subsection{Lokale und globlale Sensitivitätsanalyse}
+
+Die verschiedenen Verfahren zur Sensitivitätsanalyse lassen sich in drei Kategorien einteilen: Lokale, globale Sensitivitätsanalyse und der sogenannenten Screening Methode.
+
+Bei der lokalen Sensitivitätsanalyse wird für bestimmte Werte der Ausgnagsgrößen der Einfluss der Eingangsgrößen untersucht. Dabei wird immer ein Parameter variiert und die restlichen konstant gehalten (One-At-a-Time-Methode, OAT).
+Die Sensitivitätsanalyse wird so für jeden Parameter einzeln durchgeführt und abschließend kann die spezifische Sensivität der einzelnen Parameter ermittelt werden.
+Mathematisch entspricht dies den partiellen Ableitungen der Parameter bezüglich der Ausgangsgrößen
+
+\subsubsection*{One-factor-at-a-time ($\pm \SI{20}{\percent}, \pm 1\, \sigma$)}
+
+\begin{equation}
+    sensitivity=\frac{\Delta Y}{\Delta X_{i}} \quad \textrm{Für jeden Parameter}\,X_i, i=1,\dots,n
+\end{equation}
+\begin{itemize}
+    \item Nur lokale Variatizion um Arbeitspunk 
+    \item Keine Korrelation zwischen Parametern
+    \item Standartabweichung benötigt Annahme zur Distribution und überspannt nicht den gesammten Wertebereich
+\end{itemize}
+
+\subsubsection*{Ausdruck als Partial-Ableitung}
+\begin{equation}
+    sensitivity=\frac{\partial Y}{\partial X_i}
+\end{equation}
