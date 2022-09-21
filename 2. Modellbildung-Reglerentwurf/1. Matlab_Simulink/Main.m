@@ -71,3 +71,16 @@ set(gcf, 'Position',pos-[0 0 0 100]);
 filename = fullfile('Vergleich_der_Polstellenlagen.pdf');
 exportgraphics(gcf,filename,'ContentType','vector');
 %}
+
+%% Aufschwing-Steuerung
+
+T1=(c.m1/2)*(c.l1*x_c(2))^2+(c.m2/2)*(c.l2*x_c(2))^2;
+V=(c.m1*c.l1+c.m2*c.l2)*c.g*cos(x_c(1));
+E0=T1+V;
+
+global Theta_1;
+Theta_1=pi;
+
+%% Beobachter
+
+[L, eigA1cD_Obs] = Beobachter(A,C,sP);
