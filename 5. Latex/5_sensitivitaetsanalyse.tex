@@ -1,5 +1,5 @@
 \pagestyle{milan}
-\section{Sensitivitätsanalyse der Modellparameter} \label{sec:sesitivitaetsanalyse}
+\section{Sensitivitätsanalyse der Modellparameter}\label{sec:sesitivitaetsanalyse}
 In diesem Abschnitt wird eine Parameter- und Sensivitätsanalysise durchgeführt. 
 Es wird dabei die Auswirkung von der Varianz von bestimmten Modellparametern auf die Varianz der Ausgangsparameter untersucht.
 
@@ -29,3 +29,35 @@ Mathematisch entspricht dies den partiellen Ableitungen der Parameter bezüglich
 \begin{equation}
     sensitivity=\frac{\partial Y}{\partial X_i}
 \end{equation}
+
+%\begin{figure}   
+%    \input{plot_data/SettlingTimeFilter.tikz}
+%    \caption{Settling Time $\dot\varphi$}
+%\end{figure}
+\subsection{Parameter}
+Aus den gesammten Modellparametern des Schwungradpendels (\ref{tab:Tabelle1.1}) werden folgende Parameter untersucht:
+\begin{itemize}
+    \item $C1,\, C2$
+    \item $J1,\, J2$
+    \item $m1,\, m2$
+    \item $l1,\, l2$
+    \item $V_m$
+\end{itemize}
+Es wird dabei die Auswirkung der Varrianz gennanter Parameter auf folgende Modellgrößen unterscuht:
+\begin{itemize}
+    \item Schwungrad Geschwindigkeit: $\dot\varphi$
+    \item Schwungrad Beschleunigung: $\ddot\varphi$
+    \item Pendel Winkel: $\Theta$
+    \item Pendel Geschwindikeit: $\dot\Theta$
+    \item Pendel Beschleunigung: $\ddot\Theta$
+    \item Motor Moment: $\tau$
+\end{itemize}
+\subsection{Modellantwort auf Eingangssprung}
+Um ein bessere Verständnis des Modelles zu erlangen, wird die Antwort wichtiger Parameter auf einen Sprung der Motorspannung $V_{\mathrm{m}}$ betratchtet.
+Zugrundeliegenden ist das in\,\ref{cap:nichtlinearesZustandsraummodell} entwicklete Simulink-Modell.
+
+%\begin{figure}   
+%    \input{plot_data/phi_punkt_vm_sprung.tex}
+%    \caption{Settling Time $\dot\varphi$}
+%\end{figure}
+
