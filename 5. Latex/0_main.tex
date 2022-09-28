@@ -152,31 +152,31 @@
   \inheritanchor[from=rectangle]{south}
   \inheritanchor[from=rectangle]{south west}
   \inheritanchor[from=rectangle]{south east}
-  \backgroundpath{
-    % store lower right in xa/ya and upper right in xb/yb
-    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
-    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
-    \pgfmathsetlength\pgfutil@tempdima{\pgfkeysvalueof{/pgf/parallelepiped offset x}}
-    \pgfmathsetlength\pgfutil@tempdimb{\pgfkeysvalueof{/pgf/parallelepiped offset y}}
-    \def\ppd@offset{\pgfpoint{\pgfutil@tempdima}{\pgfutil@tempdimb}}
-    \pgfpathmoveto{\pgfqpoint{\pgf@xa}{\pgf@ya}}
-    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
-    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@yb}}
-    \pgfpathlineto{\pgfqpoint{\pgf@xa}{\pgf@yb}}
-    \pgfpathclose
-    \pgfpathmoveto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
-    \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xb}{\pgf@ya}}{\ppd@offset}}
-    \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xb}{\pgf@yb}}{\ppd@offset}}
-    \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xa}{\pgf@yb}}{\ppd@offset}}
-    \pgfpathlineto{\pgfqpoint{\pgf@xa}{\pgf@yb}}
-    \pgfpathmoveto{\pgfqpoint{\pgf@xb}{\pgf@yb}}
-    \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xb}{\pgf@yb}}{\ppd@offset}}
-  }
+  %\backgroundpath{
+  %  % store lower right in xa/ya and upper right in xb/yb
+  % \southwest\pgf@xa=\pgf@x\pgf@ya=\pgf@y
+  % \northeast\pgf@xb=\pgf@x\pgf@yb=\pgf@y
+  % \pgfmathsetlength\pgfutil@tempdima{\pgfkeysvalueof{/pgf/parallelepiped offset x}}
+  % \pgfmathsetlength\pgfutil@tempdimb{\pgfkeysvalueof{/pgf/parallelepiped offset y}}
+  % \def\ppd@offset{\pgfpoint{\pgfutil@tempdima}{\pgfutil@tempdimb}}
+  % \pgfpathmoveto{\pgfqpoint{\pgf@xa}{\pgf@ya}}
+  % \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
+  % \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@yb}}
+  % \pgfpathlineto{\pgfqpoint{\pgf@xa}{\pgf@yb}}
+  %  \pgfpathclose
+  %  \pgfpathmoveto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
+  %  \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xb}{\pgf@ya}}{\ppd@offset}}
+  %  \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xb}{\pgf@yb}}{\ppd@offset}}
+  %  \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xa}{\pgf@yb}}{\ppd@offset}}
+  %  \pgfpathlineto{\pgfqpoint{\pgf@xa}{\pgf@yb}}
+  %  \pgfpathmoveto{\pgfqpoint{\pgf@xb}{\pgf@yb}}
+  %  \pgfpathlineto{\pgfpointadd{\pgfpoint{\pgf@xb}{\pgf@yb}}{\ppd@offset}}
+  %}
 }
 \makeatother
 \usetikzlibrary{math}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.5}
+%\pgfplotsset{compat=1.5}
 \usetikzlibrary{intersections,positioning,arrows,automata,calc,patterns,shapes.multipart,fit,backgrounds,decorations.pathreplacing}
 \usetikzlibrary{decorations,shapes.geometric}
 \usetikzlibrary{matrix,calc,angles,positioning,quotes}
@@ -201,6 +201,7 @@
 \usepackage{circuitikz}
 
 \usepackage{multido}
+\usepackage{amsmath}
 
 % Verlinkungen im Text
 \usepackage{url}
@@ -208,7 +209,8 @@
 \PassOptionsToPackage{hyphens}{url}
 \hypersetup{hidelinks}
 \urlstyle{same}
-
+%\usetikzlibrary{external}
+%\tikzexternalize[prefix=figures/]
 %--------------------------------------------------------------------------
 % Eigene Befehle
 %--------------------------------------------------------------------------
@@ -251,7 +253,7 @@
 \newcommand*{\zitat}[2]{%
    \normalfont\small
    \begin{quote}
-   \glqq#1\grqq \par
+   \glqq#1\grqq\par
    #2
    \end{quote}
    \normalsize
@@ -259,7 +261,7 @@
 \newcommand*{\zitatmitueberschrift}[3]{%
    \normalfont\small
    \begin{quote} #3
-   \glqq#1\grqq \par
+   \glqq#1\grqq\par
    #2
    \end{quote}
    \normalsize
@@ -291,7 +293,7 @@
 % \usepackage[headsepline,footsepline]{scrlayer-scrpage}
 \usepackage[headsepline]{scrlayer-scrpage}
 \pagestyle{scrheadings}
-\clearpairofpagestyles
+\clearpairofpagestyles%
 \ihead{\headmark}
 \automark{section}
 \chead{}
@@ -409,6 +411,10 @@
 %\include{9_ausblick}
 
 %---------Quellen---------------------------------
+\newpage
+\pagestyle{scrheadings}
+\newcount\Quellennummer%
+\Quellennummer=1
 
 
 \end{document}
