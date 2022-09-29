@@ -1,14 +1,14 @@
 %%
-% c1 variation
+% c2 variation
 close all
 model="Einfache_Zustandsrueckfuehrung_nichtlinear";
 load_system(model);
-c1_sweeps=[0.01, 0.04, 0.1 ,1];
+c2_sweeps=[0.0001, 0.001, 0.01 ,0.1];
 simIn(1:4) = Simulink.SimulationInput(model);
 
 for idx = 1:4
    %simIn(idx) = setVariable(simIn,'l2',l2sweep(idx),'Workspace','Einfache_Zustandsrueckfuehrung_nichtlinear');
-    simIn(idx) = simIn(idx).setVariable('c.c1',c1_sweeps(idx));
+    simIn(idx) = simIn(idx).setVariable('c.c2',c2_sweeps(idx));
     
 end
 
@@ -26,8 +26,8 @@ plot(out(4).x.Phi_Punkt.Time,out(4).x.Phi_Punkt.Data,'c-.','LineWidth',1.5)
 grid on ;
 xlabel('t [s]','interpreter','latex','fontsize',1.5)
 ylabel('$\dot\varphi \,[rad/s]$','interpreter','latex','fontsize',1.5)
-legend('$c1=0.01\,N.m.s/rad$','$c1=0.04\,N.m.s/rad$','$c1=0.1\,N.m.s/rad$','$c1=1\,N.m.s/rad$','interpreter','latex','fontsize',14)
-saveas(gcf,'figure/c1/phi_punkt','epsc')
+legend('$c2=0.0001\,N.m.s/rad$','$c2=0.001\,N.m.s/rad$','$c2=0.01\,N.m.s/rad$','$c2=0.1\,N.m.s/rad$','interpreter','latex','fontsize',14)
+saveas(gcf,'figure/c2/phi_punkt','epsc')
 %%
 %Phi punkt punkt
 figure('Name','Phi Punkt Punkt')
@@ -39,8 +39,8 @@ plot(out(4).phi_punkt_punkt.Time,out(4).phi_punkt_punkt.Data,'c-.','LineWidth',1
 grid on ;
 xlabel('t [s]','interpreter','latex','fontsize',1.5)
 ylabel('$\ddot\varphi \,[rad/s^2]$','interpreter','latex','fontsize',1.5)
-legend('$c1=0.01\,N.m.s/rad$','$c1=0.04\,N.m.s/rad$','$c1=0.1\,N.m.s/rad$','$c1=1\,N.m.s/rad$','interpreter','latex','fontsize',14)
-saveas(gcf,'figure/c1/phi_punkt_punkt','epsc')
+legend('$c2=0.0001\,N.m.s/rad$','$c2=0.001\,N.m.s/rad$','$c2=0.01\,N.m.s/rad$','$c2=0.1\,N.m.s/rad$','interpreter','latex','fontsize',14)
+saveas(gcf,'figure/c2/phi_punkt_punkt','epsc')
 %%
 % Theta
 figure('Name','Theta')
@@ -52,8 +52,8 @@ plot(out(4).x.Theta.Time,out(4).x.Theta.Data*180/pi,'c-.','LineWidth',1.5)
 grid on ;
 xlabel('t [s]','interpreter','latex','fontsize',1.5)
 ylabel('$\Theta \,[deg]$','interpreter','latex','fontsize',1.5)
-legend('$c1=0.01\,N.m.s/rad$','$c1=0.04\,N.m.s/rad$','$c1=0.1\,N.m.s/rad$','$c1=1\,N.m.s/rad$','interpreter','latex','fontsize',14)
-saveas(gcf,'figure/c1/theta','epsc')
+legend('$c2=0.0001\,N.m.s/rad$','$c2=0.001\,N.m.s/rad$','$c2=0.01\,N.m.s/rad$','$c2=0.1\,N.m.s/rad$','interpreter','latex','fontsize',14)
+saveas(gcf,'figure/c2/theta','epsc')
 %%
 %pendel geschwindikkeit theta punkt
 figure('Name','Theta Punkt')
@@ -65,8 +65,8 @@ plot(out(4).x.Theta_Punkt.Time,out(4).x.Theta_Punkt.Data,'c-.','LineWidth',1.5)
 grid on ;
 xlabel('t [s]','interpreter','latex','fontsize',1.5)
 ylabel('$\dot\Theta \,[rad/s]$','interpreter','latex','fontsize',1.5)
-legend('$c1=0.01\,N.m.s/rad$','$c1=0.04\,N.m.s/rad$','$c1=0.1\,N.m.s/rad$','$c1=1\,N.m.s/rad$','interpreter','latex','fontsize',14)
-saveas(gcf,'figure/c1/theta_punkt','epsc')
+legend('$c2=0.0001\,N.m.s/rad$','$c2=0.001\,N.m.s/rad$','$c2=0.01\,N.m.s/rad$','$c2=0.1\,N.m.s/rad$','interpreter','latex','fontsize',14)
+saveas(gcf,'figure/c2/theta_punkt','epsc')
 %%
 %theta punkt punkt
 figure('Name','Theta Punkt punkt')
@@ -78,8 +78,8 @@ plot(out(4).theta_punkt_punkt.Time,out(4).theta_punkt_punkt.Data,'c-.','LineWidt
 grid on ;
 xlabel('t [s]','interpreter','latex','fontsize',1.5)
 ylabel('$\ddot\Theta \,[rad/s^2]$','interpreter','latex','fontsize',1.5)
-legend('$c1=0.01\,N.m.s/rad$','$c1=0.04\,N.m.s/rad$','$c1=0.1\,N.m.s/rad$','$c1=1\,N.m.s/rad$','interpreter','latex','fontsize',14)
-saveas(gcf,'figure/c1/theta_punkt_punkt','epsc')
+legend('$c2=0.0001\,N.m.s/rad$','$c2=0.001\,N.m.s/rad$','$c2=0.01\,N.m.s/rad$','$c2=0.1\,N.m.s/rad$','interpreter','latex','fontsize',14)
+saveas(gcf,'figure/c2/theta_punkt_punkt','epsc')
 %%
 figure('Name','Motor torque')
 plot(out(1).tau.Time,out(1).tau.Data,'black','LineWidth',1.5)
@@ -90,5 +90,5 @@ plot(out(4).tau.Time,out(4).tau.Data,'c-.','LineWidth',1.5)
 grid on ;
 xlabel('t [s]','interpreter','latex','fontsize',1.5)
 ylabel('$\tau \,[Nm]$','interpreter','latex','fontsize',1.5)
-legend('$c1=0.01\,N.m.s/rad$','$c1=0.04\,N.m.s/rad$','$c1=0.1\,N.m.s/rad$','$c1=1\,N.m.s/rad$','interpreter','latex','fontsize',14)
-saveas(gcf,'figure/c1/tau','epsc')
+legend('$c2=0.0001\,N.m.s/rad$','$c2=0.001\,N.m.s/rad$','$c2=0.01\,N.m.s/rad$','$c2=0.1\,N.m.s/rad$','interpreter','latex','fontsize',14)
+saveas(gcf,'figure/c2/tau','epsc')
