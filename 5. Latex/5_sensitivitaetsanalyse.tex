@@ -52,12 +52,217 @@ Es wird dabei die Auswirkung der Varrianz gennanter Parameter auf folgende Model
     \item Pendel Beschleunigung: $\ddot\Theta$
     \item Motor Moment: $\tau$
 \end{itemize}
-\subsection{Modellantwort auf Eingangssprung}
+\subsection*{Modellantwort auf Eingangssprung}
+
 Um ein bessere Verständnis des Modelles zu erlangen, wird die Antwort wichtiger Parameter auf einen Sprung der Motorspannung $V_{\mathrm{m}}$ betratchtet.
 Zugrundeliegenden ist das in\,\ref{cap:nichtlinearesZustandsraummodell} entwicklete Simulink-Modell.
 
-%\begin{figure}   
-%    \input{plot_data/phi_punkt_vm_sprung.tex}
-%    \caption{Settling Time $\dot\varphi$}
-%\end{figure}
+Die Eingansprunge der Motorspannung erfolgt in den Größren: $V_{\mathrm{m}}=\SI{5}{\volt},\SI{10}{\volt},\SI{15}{\volt},\SI{20}{\volt}$.
+Das Pendel befidnet sich dabei in Ruhelage ($\Theta=\SI{180}{\degree}$). 
+Ein Eingangsprung führt zu einem Moment an der Motorwelle, welches das Schwungrad und das Pendel in Bewegung versetzt.\\
+
+\begin{wrapfigure}{l}{.5\textwidth}
+    \captionsetup[subfigure]{justification=centering,font=footnotesize}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/Vm_sprung/phi_punkt.eps}
+        \caption{Schwungrad Geschwindikeit}
+        \label{fig:Vm_sprung_phi_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/Vm_sprung/phi_punkt_punkt.eps}
+        \caption{Schwungrad Beschleunigung}
+        \label{fig:Vm_sprung_phi_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/Vm_sprung/theta_punkt_punkt.eps}
+        \caption{Pendel Beschleunigung}
+        \label{fig:Vm_sprung_theta_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/Vm_sprung/tau.eps}
+        \caption{Motor Moment}
+        \label{fig:Vm_sprung_tau}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/Vm_sprung/theta_punkt.eps}
+        \caption{Pendel Geschwindigkeit}
+        \label{fig:Vm_sprung_theta_punkt}      
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/Vm_sprung/theta.eps}
+        \caption{Pendel Winkel}
+        \label{fig:Vm_sprung_theta}
+    \end{subfigure}
+        \caption{Modellantwort auf Eingangssprung der Motorspannung}
+\end{wrapfigure}
+In Abb.\,\ref{fig:Vm_sprung_phi_punkt} ist zu erkennen, dass der stabile Zustand der Endgeschwindigkeit des Schwungrades ungefähr zur selber Zeit ($t=\SI{0.5}{\s}$) erreicht wird.
+Die dabei erreichte Endgeschwindigkeit ist direkt abhängig von der angelegten Motorsspannung $V_m$.\\
+Das Maximum des Motormomentes hängt dabei ebenso von der Höhe der angelegten Motorsspannung $V_m$ ab (Abb. \ref{fig:Vm_sprung_tau}).
+Das Moment erzeugt dabei eine Beschleunigung des Schwungrades (Abb. \ref{fig:Vm_sprung_phi_punkt_punkt}), die ebenso durch das Moment in Abhängigkeit zur Höhe des angelegten Motorstrommes steht.
+
+Das Pendel wird durch das Moment in Bewegung versetzt und schwingt in Eigenfrequnz (Abb. \ref{fig:Vm_sprung_theta}). 
+Die Amplitude der Pendelbewegung ist dabei abhängig von der Höhe der angelegten Motorsspannung $V_m$.
+
+Die Pendelgeschwindigkeit (Abb. \ref{fig:Vm_sprung_theta_punkt}) hat ihren Nulldurchgang beim maximaller Amplitude des Pendelwinkels (Abb. \ref{fig:Vm_sprung_tau}), wobei die maximale Pendelgeschwindigkeit bei $\tau=\SI{180}{\degree}$ erreicht wird.
+
+Nach erreichen der Endgeschwindigkeit des Schwungrades, geht die Beschleunigung gegen Null und das Motormomente gleicht dem Reibungsmoment (Abb. \ref{fig:Vm_sprung_tau}).
+Das Pendel ist ab diesen Moment nur noch durch die Gravitation beeinfluss und schwing solange bis es in Ruheposition zurückkehrt.
+
+\subsection*{Einfluss der Länge des Pendels zum Massezentrum des Schwungrades (l2)}
+Die Länge von der Aufhängung des Pendels bis zum Masseschwerpunkt des Schwungrades ($l2$) ist ein weiterer Parameter er im Folgenden unterscuht wird.
+In den Simualtionen (Abb. \ref{fig:l2}) wurde der Parameter $l2$ von $\SI{0.1}{\m}$ bis $\SI{1.5}{\m}$ variiert.
+Die Motorspannung wrd dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfals auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.
+\pagebreak
+
+\begin{wrapfigure}{l}{.5\textwidth}
+    \captionsetup[subfigure]{justification=centering,font=footnotesize}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/l2/phi_punkt.eps}
+        \caption{Schwungrad Geschwindikeit}
+        \label{fig:l2_phi_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/l2/phi_punkt_punkt.eps}
+        \caption{Schwungrad Beschleunigung}
+        \label{fig:l2_phi_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/l2/theta_punkt_punkt.eps}
+        \caption{Pendel Beschleunigung}
+        \label{fig:l2_theta_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/l2/tau.eps}
+        \caption{Motor Moment}
+        \label{fig:l2_tau}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/l2/theta_punkt.eps}
+        \caption{Pendel Geschwindigkeit}
+        \label{fig:l2_theta_punkt}      
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/l2/theta.eps}
+        \caption{Pendel Winkel}
+        \label{fig:l2_theta}
+    \end{subfigure}
+        \caption{Modellantwort auf Varianz des Parameters: $l2$}
+        \label{fig:l2}
+\end{wrapfigure}
+Abbildung \ref{fig:l2_phi_punkt}, \ref{fig:l2_phi_punkt}, \ref{fig:l2_tau} zeigen keine Abweichung, was zeigt das der Parameter $l2$ keinen Einfluss auf die Modellgrößen $\dot\varphi,\ddot\varphi,\tau$ hat.
+Es ist jdeoch ein Einfluss auf die Parameter $\Theta,\dot\Theta,\ddot\Theta$ (Abb. \ref{fig:l2_theta}\ref{fig:l2_theta_punkt}\ref{fig:l2_theta_punkt_punkt}) zu erkennen. 
+
+Bei kleinerer Länge $l2$ erhöht sich die Amplitude des Winkels $\Theta$ sowie dessen Geschwindigkeit $\dot\Theta$ und Beschleunigung $\ddot\Theta$. 
+
+Ebenso ist zu erkennen das sich dei Eigenfrequenz, mit der das Pendel Schwing verändert.
+Je größer die Länge $l2$ ist, desto größeres Moment musss aufgebracht werden um die gleiche Winkelauslenkung $\Theta$ zu erreichen. 
+Daraus folgt, dass größere Pendelängen die Winkelantwort des Modelles verschlechtern. 
+
+\subsection*{Einfluss des Trägheitsmoments des Schwungrads (J2)}
+Der Einfluss des Trägheitsmoments des Schwungrades ($J2$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:j2}) untersucht. 
+Der Parameter $J2$ wird dabei von $\SI{0.0005}{\kg\m^2}$ bis $\SI{0.008}{\kg\m^2}$ variiert.
+Die Motorspannung wrd dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfals auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
+\pagebreak
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \captionsetup[subfigure]{justification=centering,font=footnotesize}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/j2/phi_punkt.eps}
+        \caption{Schwungrad Geschwindikeit}
+        \label{fig:j2_phi_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/j2/phi_punkt_punkt.eps}
+        \caption{Schwungrad Beschleunigung}
+        \label{fig:j2_phi_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/j2/theta_punkt_punkt.eps}
+        \caption{Pendel Beschleunigung}
+        \label{fig:j2_theta_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/j2/tau.eps}
+        \caption{Motor Moment}
+        \label{fig:j2_tau}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/j2/theta_punkt.eps}
+        \caption{Pendel Geschwindigkeit}
+        \label{fig:j2_theta_punkt}      
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/j2/theta.eps}
+        \caption{Pendel Winkel}
+        \label{fig:j2_theta}
+    \end{subfigure}
+        \caption{Modellantwort auf Varianz des Parameters: $J2$}
+        \label{fig:j2}
+\end{wrapfigure}
+Die stationäre Endgeschwindigkeit des Schwungrades, wird durch den Parameter $J2$ stark beinflusst (Abb. \ref{fig:j2_phi_punkt}). 
+Bei erhöhter Trägheit des Schwungrades erhöht sich die Anstiegszeit, bis ein eingeschwungener Zustand erreicht wird.
+Der Wert konvergiert allerdings bei allen Werten von $J2$ gegen die gleiche Endgeschwindigkeit.\\
+
+Die Beschleunigung des Schwungrades wird ebenfalls stark beinflusst (Abb. \ref{fig:j2_phi_punkt_punkt}).
+Hierbei ist zu erkennen, dass ein erhöhtes Trägheitsmoment die maximale Beschleunigung bei $t\approx\SI{0}{\s}$ verringert. 
+Ebenso wird der stationäre Zustand später erreicht und mit weiterer Erhöhung des Parameters ist ein Schwingen der Beschleunigung zu erkennen.\\
+   
+Das maximale Motormoment (Abb. \ref{fig:j2_tau}) ist bei allen Werten von $J2$ gleich, benötigt aber bei größeren Werten von $J2$ länger um den stationären Zustand zu erreichen.\\
+Dadurch dass das Moment bei erhöhten Trägheitsmoment länger anliegt, wird auch eine größere Kraft auf das Pendel ausgeübt(Abb. \ref{fig:j2_theta_punkt_punkt}).\\
+In Abb.\ref{fig:j2_theta} ist zu erkennen, dass ein größere Winkelauschlag des Pendels erreicht wurde.\\
+Dies ist ebenso der Fall bei der Pendelbeschleunigung (Abb. \ref{fig:j2_theta_punkt_punkt}) und der Pendelgeschwindigkeit (Abb. \ref{fig:j2_theta_punkt}).\\
+
+ Das Trägheitsmoment des Schwungrades $J2$ hat also einen positiven Einfluss auf die Winkelantwort des Modells.\\  
+ 
+ \subsection*{Einfluss der Masse des Schwungrads (M2)}
+ Der Einfluss der Masse des Schwungrades ($m2$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:m2}) untersucht. 
+ Der Parameter $J2$ wird dabei von $\SI{0.01}{\kg}$ bis $\SI{1.5}{\kg}$ variiert.
+ Die Motorspannung wrd dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfals auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
+ \begin{wrapfigure}{l}{0.5\textwidth}
+    \captionsetup[subfigure]{justification=centering,font=footnotesize}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/m2/phi_punkt.eps}
+        \caption{Schwungrad Geschwindikeit}
+        \label{fig:m2_phi_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/m2/phi_punkt_punkt.eps}
+        \caption{Schwungrad Beschleunigung}
+        \label{fig:m2_phi_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49 \linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/m2/theta_punkt_punkt.eps}
+        \caption{Pendel Beschleunigung}
+        \label{fig:m2_theta_punkt_punkt}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/m2/tau.eps}
+        \caption{Motor Moment}
+        \label{fig:m2_tau}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/m2/theta_punkt.eps}
+        \caption{Pendel Geschwindigkeit}
+        \label{fig:m2_theta_punkt}      
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
+        \includegraphics[width=\linewidth]{plot_data/parameter/fig/m2/theta.eps}
+        \caption{Pendel Winkel}
+        \label{fig:m2_theta}
+    \end{subfigure}
+        \caption{Modellantwort auf Varianz des Parameters: $M2$}
+        \label{fig:m2}
+\end{wrapfigure}
+
+In den Simulationen ist zu erkennen das die Schwungradgeschwindigkeit (\ref{fig:m2_phi_punkt}), die Schwungradbeschleunigung (\ref{fig:m2_phi_punkt_punkt}) und das Motormoment (\ref{fig:m2_tau}) durch den Parameter $m2$ nicht beeinflusst werden.\\
+Die Masse des Schwungrads hat also auf die gehalten Größen keinen Einfluss.\\
+
+Der Winkel des Pendels (Abb. \ref{fig:m2_theta}) verrignert sich mit erhöhung der Masse $m2$. 
+Dies ist auch bei der Pendelgeschwindigkeit (Abb. \ref{fig:m2_theta_punkt}) und der Pendelbeschleunigung (Abb. \ref{fig:m2_theta_punkt_punkt}) zu erkennen.\\
+Dies liegt an der, durch die zusätzliche Masse, erhöhten Gewichtskraft, die auf das Pendel wirkt.\\
+Ebenso wird die Dämpfung der Schwingung verändert und die Schwingungsdauer verlängert sich.\\
+
+Die erhöhung des Parameters $m2$ trägt also zu einer Verschlechterung der Modellantwort bei.\\
+
+
 
