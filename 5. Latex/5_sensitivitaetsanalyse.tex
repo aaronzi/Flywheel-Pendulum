@@ -29,6 +29,7 @@ Mathematisch entspricht dies den partiellen Ableitungen der Parameter bezüglich
 \begin{equation}
     sensitivity=\frac{\partial Y}{\partial X_i}
 \end{equation}
+Für die Analytische Lösung wird ein lineares Modell benötigt. Die Linearisierung wurde zwar in Kap. \ref{sec:LMI} für dieses Modell durchgeführt, jeddoch soll im Rahmen dieser Arbeit nicht weiter darauf eingeganen werden.
 
 \subsection{Parameter}
 Aus den gesamten Modellparametern des Schwungradpendels (\ref{tab:Tabelle1.1}) werden folgende Parameter untersucht:
@@ -260,7 +261,7 @@ Ebenso wird die Dämpfung der Schwingung verändert und die Schwingungsdauer ver
 Die Erhöhung des Parameters $m2$ trägt also zu einer Verschlechterung der Modellantwort bei.
 
 \subsection*{Einfluss der Reibung des Pendels (C1)}
-Der Einfluss der Reibung des Pendels ($J1$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:c1}) untersucht. 
+Der Einfluss der Reibung des Pendels ($C1$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:c1}) untersucht. 
 Der Parameter $C1$ wird dabei von $\SI{0.01}{\newton\meter\second\per\radian}$ bis $\SI{1.5}{newton\meter\second\per\radian}$ variiert.
 Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
 
@@ -300,16 +301,19 @@ Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Paramete
         \label{fig:c1}
 \end{wrapfigure}
 
-Die Schungrad Geschwindigkeit (Abb. \ref{fig:c1_phi_punkt}) und die Schwungrad Beschleunigung (Abb. \ref{fig:c1_phi_punkt_punkt}) werden durch den Parameter $C1$ nicht beeinflusst.\\
+Die Schwungradgeschwindigkeit (Abb. \ref{fig:c1_phi_punkt}) und die Schwungradbeschleunigung (Abb. \ref{fig:c1_phi_punkt_punkt}) werden durch den Parameter $C1$ nicht beeinflusst.\\
 Ebenso wird das Motormoment (\ref{fig:c1_tau}) durch die Reibung des Pendels nicht beeinflusst.\\
 
 In der Pendelauslenkung (Abb. \ref{fig:c1_tau}) ist der Einfluss der Reibung deutlich zu erkennen. Je höher der Reibungskoeffizient, desto kleiner wird die Pendelauslenkung.\\
-Ebenso wird, wie zu Erwarten, die Pendelgeschwindigkeit (Abb. \ref{fig:c1_theta_punkt}) und die Pendelbeschleunigung (Abb. \ref{fig:c1_theta_punkt_punkt}) durch die Reibung des Pendels gedämpft.\\
-Daraus lässt sich schließen, dass ein Teil des Momentes benötigt wird um die Reibung zu überkommen. 
+Ebenso wird, wie zu erwarten, die Pendelgeschwindigkeit (Abb. \ref{fig:c1_theta_punkt}) und die Pendelbeschleunigung (Abb. \ref{fig:c1_theta_punkt_punkt}) durch die Reibung des Pendels gedämpft.\\
+Daraus lässt sich schließen, dass ein Teil des Momentes benötigt wird, um die Reibung zu überkommen. 
 
 Die Erhöhung des Parameters $C1$ trägt also zu einer Verschlechterung der Modellantwort bei.
 \subsection*{Einfluss der Reibung des Schwungrades (C2)}
-
+Der Einfluss der Reibung des Schwungrades ($C2$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:c2}) untersucht. 
+Der Parameter $C2$ wird dabei von $\SI{0.0001}{\newton\meter\second\per\radian}$ bis $\SI{0.1}{\newton\meter\second\per\radian}$ variiert.
+Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
+ 
 \begin{wrapfigure}{l}{0.5\textwidth}
     \captionsetup[subfigure]{justification=centering,font=footnotesize}
     \begin{subfigure}[b]{0.49\linewidth}
@@ -346,3 +350,69 @@ Die Erhöhung des Parameters $C1$ trägt also zu einer Verschlechterung der Mode
         \label{fig:c2}
 \end{wrapfigure}
 
+Die Schwungradgeschwindigkeit (Abb. \ref{fig:c2_phi_punkt}) wird durch die Reibung des Schwungrades stark beeinflusst. Je höher der Reibungskoeffizient, desto kleiner wird die maximale Schwungradgeschwindigkeit.\\
+Die Reibung wirkt ebenfalls dämpfend auf Schwingung in der Geschwindigkeit und die Geschwindigkeit erreicht bei höher Reibung schneller ihren stabilen Endwert.\\
+
+Die Schwungradbeschleunigung (Abb. \ref{fig:c2_phi_punkt_punkt}) wird ebenfalls durch die Reibung beeinflusst. Die maximale Beschleunigung um $t\approx\SI{0}{\s}$ ist unabhängig von $C2$, jedoch fällt sie schneller ab, je höher der Reibungskoeffizient ist.\\
+
+Dadurch wird auch das Motormoment (Abb. \ref{fig:c2_tau}) beeinflusst. Je höher der Reibungskoeffizient, desto mehr Moment muss der Motor im stabilen Zustand aufbringen, um die Reibung zu überwinden.\\
+Infolgedessen stellt sich ein konstantes Motormoment ein.
+
+Das nun fehlende Motormoment macht sich auch in der Pendelgeschwindigkeit (Abb. \ref{fig:c2_theta_punkt}), der Pendelbeschleunigung (\ref{fig:c2_theta_punkt_punkt}) und dem Pendelwinkel (Abb. \ref{fig:c2_theta}) bemerkbar.\\
+Je höher der Reibungskoeffizient $C2$ desto geringer die Amplituden.
+Die Eigenfrequenz wird nicht beeinflusst.\\
+
+Damit ist der Reibungskoeffizient $C2$ ein wichtiger Parameter, der alle wichtigen Modellgrößen beeinflusst.
+\pagebreak
+\subsection*{Überblick wichtiger Parameter und deren beinflusste Modellgrößen}
+
+
+\begin{itemize}
+    \item Schwungradgeschwindigkeit $\dot\varphi$
+    \begin{itemize}
+        \item $V_m$
+        \item $J2$
+        \item $C2$
+    \end{itemize}
+    \item Schwungradbeschleunigung $\ddot\varphi$
+    \begin{itemize}
+        \item $V_m$
+        \item $J2$
+        \item $C2$
+    \end{itemize}
+    \item Pendelbeschleunigung $\ddot\Theta$
+    \begin{itemize}
+        \item $V_m$
+        \item $l2$
+        \item $J2$
+        \item $m2$
+        \item $C1$
+        \item $C2$
+    \end{itemize}
+    \item Motormoment $\tau$
+    \begin{itemize}
+        \item $V_m$
+        \item $J2$
+        \item $C2$
+    \end{itemize}
+    \item Pendelgeschwindigkeit $\dot\Theta$
+    \begin{itemize}
+        \item $V_m$
+        \item $l2$
+        \item $J2$
+        \item $m2$
+        \item $C1$
+        \item $C2$
+    \end{itemize}
+    \item Pendelwinkel $\Theta$
+    \begin{itemize}
+        \item $V_m$
+        \item $l2$
+        \item $J2$
+        \item $m2$
+        \item $C1$
+        \item $C2$ 
+    \end{itemize}
+\end{itemize}
+
+\section{Globale Sensitivitätsanalyse nach Monte Carlo Methode}
