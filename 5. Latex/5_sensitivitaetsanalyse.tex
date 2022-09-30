@@ -30,6 +30,20 @@ Mathematisch entspricht dies den partiellen Ableitungen der Parameter bezüglich
     sensitivity=\frac{\partial Y}{\partial X_i}
 \end{equation}
 Für die Analytische Lösung wird ein lineares Modell benötigt. Die Linearisierung wurde zwar in Kap. \ref{sec:LMI} für dieses Modell durchgeführt, jeddoch soll im Rahmen dieser Arbeit nicht weiter darauf eingeganen werden.
+\subsubsection*{Globale Sensitivitätsanalyse}
+Bei der globlan Sensitivitätsanalyse wird, im gegensatz zur lokalen Sensitivitätsanalyse nicht nur ein Parameter variiert, sondern alle Parameter gleichzeitig.
+Dies macht es möglich auch Abhängigkeiten unter den Parametern zu berücksichtigen. \\
+Ebenso werden die Parameter nich nur über einen kelien lokalen Bereich verrändert, sodner über den gesammten Definitionsbereich.
+Dieser ist bei Physikalischen Modellen meist nicht bekannt, sodass hierfür eine statistische Verteilung der Parameter angenommen werden muss.
+Dennoch sollte die Verteilung so gewählt werden, dass sie den tatsächlichen physikalische möglichen Verteilungen möglichst nahe kommt.
+
+Allerdings ist die globale Sensitivitätsanalyse sehr aufwendig und kann nur für kleine Modelle durchgeführt werden.\\
+
+\textbf{Monte Carlo Methode:}
+Die Monte Carlo Methode ist eine statistische Methode, die zur Lösung von Problemen mit mehreren Variablen eingesetzt wird.
+Sie generiert einen zufälligen Parameterraum und berechnet für diesen die Ausgangsgrößen.
+Die so enstehehnden Scatterplots können dann zur eifnachen graphischen Analyse der Parameter verwendet werden.
+
 
 \subsection{Parameter}
 Aus den gesamten Modellparametern des Schwungradpendels (\ref{tab:Tabelle1.1}) werden folgende Parameter untersucht:
@@ -49,6 +63,8 @@ Es wird dabei die Auswirkung der Varianz genannter Parameter auf folgende Modell
     \item Pendel Beschleunigung: $\ddot\Theta$
     \item Motor Moment: $\tau$
 \end{itemize}
+
+
 \subsection*{Modellantwort auf Eingangssprung}
 
 Um ein besseres Verständnis des Modells zu erlangen, wird die Antwort wichtiger Parameter auf einen Sprung der Motorspannung $V_{\mathrm{m}}$ betrachtet.
@@ -365,30 +381,37 @@ Die Eigenfrequenz wird nicht beeinflusst.\\
 Damit ist der Reibungskoeffizient $C2$ ein wichtiger Parameter, der alle wichtigen Modellgrößen beeinflusst.
 \pagebreak
 \subsection*{Überblick wichtiger Parameter und deren beinflusste Modellgrößen}
+Im folgenden wird ein Überblick über die wichtigsten Parameter und deren beinflussten Modellgrößen gegeben.\\
+Dabei handelt es sich um keine gewichtete Liste, sondern nur ein Überblcik aus den Parametern die die speziellen Modelgrößen Beinflussen.
 
 
-\begin{itemize}
-    \item Schwungradgeschwindigkeit $\dot\varphi$
+\begin{minipage}[t]{.5\textwidth}
     \begin{itemize}
-        \item $V_m$
-        \item $J2$
-        \item $C2$
-    \end{itemize}
-    \item Schwungradbeschleunigung $\ddot\varphi$
+        \item Schwungradgeschwindigkeit $\dot\varphi$
+        \begin{itemize}
+            \item $V_m$
+            \item $J2$
+            \item $C2$
+        \end{itemize}
+        \item Schwungradbeschleunigung $\ddot\varphi$
+        \begin{itemize}
+            \item $V_m$
+            \item $J2$
+            \item $C2$
+        \end{itemize}
+        \item Pendelbeschleunigung $\ddot\Theta$
+        \begin{itemize}
+            \item $V_m$
+            \item $l2$
+            \item $J2$
+            \item $m2$
+            \item $C1$
+            \item $C2$
+        \end{itemize}
+        \end{itemize}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
     \begin{itemize}
-        \item $V_m$
-        \item $J2$
-        \item $C2$
-    \end{itemize}
-    \item Pendelbeschleunigung $\ddot\Theta$
-    \begin{itemize}
-        \item $V_m$
-        \item $l2$
-        \item $J2$
-        \item $m2$
-        \item $C1$
-        \item $C2$
-    \end{itemize}
     \item Motormoment $\tau$
     \begin{itemize}
         \item $V_m$
@@ -414,5 +437,218 @@ Damit ist der Reibungskoeffizient $C2$ ein wichtiger Parameter, der alle wichtig
         \item $C2$ 
     \end{itemize}
 \end{itemize}
+\end{minipage}
+
+Besonders Wichtige Parameter sind:
+\begin{itemize}
+    \item Länge des Pendels zum Massenschwerpunkt $l2$
+    \item Trägheitsmoment des Schwungrades $J2$
+    \item Reibung des Schwungrades $C2$
+    \item  Reibung des Pendels $C1$
+\end{itemize}
+All diese Parameter Beinflussen die wichtigsten Modelgrößen wie Pendelgeschwindigkeit, Pendelbeschleunigung und Pendelwinkel.\\
 
 \section{Globale Sensitivitätsanalyse nach Monte Carlo Methode}
+Bei der globale Sensitivitätsanalyse mit der Monte Carlo Methode werden die Parameter in einem bestimmten Bereich zufällig gewählt und die Modellgrößen berechnet.\\
+Da es sich um eine Vielzahl von Paramter und Modellgrößen handelt, müssen viele Simulationen durchgeführt werden.\\
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|lll|}
+        \hline
+        \rowcolor{grey}
+        \textbf{Symbol}     & \textbf{Parameter}                                & \textbf{Varianz der Parameter}                         \\ \hline
+        $J_{\mathrm{1}}$    & Trägheitsmoment des Pendels (+ Motorstator)       & $\SI{0.01}{kg \cdot m^2}$ bis $\SI{0.1}{kg \cdot m^2}$                  \\
+        $J_{\mathrm{2}}$    & Trägheitsmoment des Rads (+ Motorrotor)           & $\SI{0.0001}{kg \cdot m^2} $ bis $\SI{0.001}{kg \cdot m^2}$               \\
+        $c_{\mathrm{1}}$    & Reibungsfaktor des Pendels                        & $\SI{0.04}{\frac{N \cdot m \cdot s}{rad}}$ bis $\SI{0.4}{\frac{N \cdot m \cdot s}{rad}}$    \\
+        $c_{\mathrm{2}}$    & Reibungsfaktor des Rads                           & $\SI{0.0001}{\frac{N \cdot m \cdot s}{rad}}$ bis $\SI{0.001}{\frac{N \cdot m \cdot s}{rad}}$  \\
+        $m_{\mathrm{1}}$    & Masse des Pendels und Stators                     & $\SI{0.8}{kg}$ bis $\SI{8}{kg}$                              \\
+        $m_{\mathrm{2}}$    & Masse des Rads und Rotors                         & $\SI{0.5}{kg}$ bis $\SI{5}{kg}$                              \\
+        $l_{\mathrm{1}}$    & Länge vom Ursprung bis Schwerpunkt des Pendels    & $\SI{0.1}{m}$ bis $\SI{1}{m}$                              \\
+        $l_{\mathrm{2}}$    & Länge vom Ursprung bis Schwerpunkt des Rads       & $\SI{5}{V}$ bis $\SI{20}{V}$  \\
+        $V_{\mathrm{m}}$    & Motorspannung       & $\SI{0.1}{m}$ bis $\SI{1}{m}$                                \\ \hline
+    \end{tabular}
+    \caption{Varianz der Modellparameter des Schwungrad-Pendels}
+    \label{tab:varianz_parameter}
+\end{table}
+
+Über die in Tab. \ref{tab:varianz_parameter} aufgeführten Parameter wird eine Monte Carlo Simulation mit jeweils 1000 Zufallswerten pro Parameter durchgeführt.\\
+Die Ergebnisse werden als Scatterplots dargestellt.\\
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/scatter.eps}
+    \caption{Scatterplot über alle Parameter}
+    \label{fig:scatter}
+\end{figure}
+Betrachtet man die Simulation über den gesammten Parameterraum (\ref{fig:scatter}), können einige eindeutige Korrelationen erkannt werden.
+Bei Scatterplots ohne deutliche Korrelation lässt sich keine Beinflussung der Modellgrößen durch den gegebenen Parameter feststellen.
+
+\subsection*{Schwungradgeschwindigkeit $\dot\varphi$}
+$\bm{\dot\varphi}$ \textbf{max: }\\
+Bei der maximalen Schwungradgeschwindigkeit gibt es zwei Parameter die die Modellgröße signifikant beeinflussen.\\
+Dabei handelt es sich um die Motorspannung $V_{\mathrm{m}}$(Abb. \ref{fig:scatter_dotphi_max}) und die Reibung des Schwungrades $C_2$ (Abb. \ref{fig:scatter_dotphi_c2}).
+Mit der definierten Varianz hat die Motorspannung einen größeren Einfluss, ist aber in Abhängigkeit von der Reibung des Schwungrades.\\
+
+$\bm{\dot\varphi}$ \textbf{Settling Time: }\\
+Bei der Settling Time gibt es zwei Parameter die  eine Korrelation erkennen lassen.
+Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{fig:scatter_dotphi_t_j2}) ist positiv und die Reibung des Schwungrades $C_2$ (Abb.\ref{fig:scatter_dotphi_t_c2}) negativ mit der Einschwingzeit korreliert.
+\begin{figure}
+    \centering
+    \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dot_phi_max.eps}
+        \caption{Korrelation Motorspannung $V_m$}
+        \label{fig:scatter_dotphi_max}
+    \end{subfigure}
+   \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dot_phi_max_c2.eps}
+        \caption{Korrelation Reibung $C_2$}
+        \label{fig:scatter_dotphi_c2}
+    \end{subfigure}
+    \caption{Scatterplots über die maximale Schwungradgeschwindigkeit}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dot_phi_t_c2.eps}
+        \caption{Korrelation Reibung $C_2$}
+        \label{fig:scatter_dotphi_t_c2}
+    \end{subfigure}
+   \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dot_phi_t_j2.eps}
+        \caption{Korrelation Trägheitsmoment $J_2$}
+        \label{fig:scatter_dotphi_t_j2}
+    \end{subfigure}
+    \caption{Scatterplots über die Einschwingzeit der Schwungradgeschwindigkeit}
+\end{figure}
+\subsection*{Schwungradbeschleunigung $\ddot\varphi$}
+$\bm{\ddot\varphi}$ \textbf{max: }\\
+Bei der maximalen Schwungradbeschleunigung gibt es eine deutlichhe Korrelation.
+Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{scatter_dotdotphi_max_j2}) ist negativ mit der maximalen Schwungradbeschleunigung korreliert (Abb. \ref{}).\\
+
+$\bm{\ddot\varphi}$ \textbf{Settling Time: }\\
+Es gibt eine deutliche postitive korrelation zwischen dem Trägheitsmoment des Schwungrades $J_2$ und der Einschwingzeit der Schwungradbeschleunigung (Abb. \ref{fig:scatter_dodottphi_t_j2}).\\
+Eine leicht negative Korrelation gibt es zwischen der Reibung des Schwungrades $C_2$ und der Einschwingzeit der Schwungradbeschleunigung (Abb. \ref{fig:scatter_dotdotphi_t_c2}).\\
+\begin{figure}
+    \centering
+        \centering
+        \includegraphics[width=0.5\textwidth]{Bilder/5_sensi/cm/dotdot_phi_max_J2.eps}
+        \caption{Korrelation Trägheitsmoment $J_2$}
+        \label{fig:scatter_dotdotphi_max_j2}
+    \caption{Scatterplot über die maximale Schwungradbeschleunigung}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dotdot_phi_t_c2.eps}
+        \caption{Korrelation Reibung $C_2$}
+        \label{fig:scatter_dotdotphi_t_c2}
+    \end{subfigure}
+   \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dotdot_phi_t_j2.eps}
+        \caption{Korrelation Trägheitsmoment $J_2$}
+        \label{fig:scatter_dodottphi_t_j2}
+    \end{subfigure}
+    \caption{Scatterplots über die Einschwingzeit der Schwungradbeschleunigung}
+\end{figure}
+\subsection*{Pendelauslenkung $\Theta$}
+$\bm{\Theta}$ \textbf{max: }\\
+Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{fig:scatter_theta_max_j2}) sowie die Motorspannung $V_m$ (Abb. \ref{fig:scatter_theta_max_Vm}) sind positiv mit der maximalen Pendelauslenkung korreliert.\\
+Die Länge $l_2$ ist neagitv mit der maximalen Pendelauslenkung korreliert (Abb. \ref{fig:scatter_theta_max_l2}).\\
+$\bm{\Theta}$ \textbf{Settling Time: }\\
+Bei der Pendeleinschwingzeit gibt es den negativ korrelierten Parameter \glqq Reibung des Pendels $C_1$\grqq{},
+\begin{figure}
+    \centering
+    \begin{subfigure}[]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/theta_max_Vm.eps}
+        \caption{Korrelation Motorspannung $V_m$}
+        \label{fig:scatter_theta_max_Vm}
+    \end{subfigure}
+   \begin{subfigure}[]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/theta_max_j2.eps}
+        \caption{Korrelation Trägheitsmoment $J_2$}
+        \label{fig:scatter_theta_max_j2}
+    \end{subfigure}
+    \begin{subfigure}[]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/theta_max_l2.eps}
+        \caption{Korrelation Länge $l_2$}
+        \label{fig:scatter_theta_max_l2}
+    \end{subfigure}
+    \caption{Scatterplots über die maximale Pendelauslenkung}
+\end{figure}
+
+\begin{figure}
+    \centering
+        \centering
+        \includegraphics[width=0.5\textwidth]{Bilder/5_sensi/cm/theta_max_c1.eps}
+        \caption{Korrelation Reibung $C_1$}
+        \label{fig:scatter_theta_t_c1}
+    \caption{Scatterplot über die Pendeleinschwingzeit}
+\end{figure}
+
+\subsection*{Pendelgeschwindigkeit $\dot\Theta$}
+$\bm{\dot\Theta}$ \textbf{max: }\\
+Es besteht eine positive Korrelation zwischen der maximalen Pendelgeschwindigkeit und dem Trägheitsmoment des Schwungrades $J_2$ (Abb. \ref{fig:scatter_dottheta_max_j2}).\\
+$\bm{\dot\Theta}$ \textbf{Settling Time: }\\
+Es lässt sich keine klare Korrelation erkennen.\\
+\begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Bilder/5_sensi/cm/dot_theta_max_J2.eps}
+        \caption{Korrelation Trägheitsmoment $J_2$}
+        \label{fig:scatter_dottheta_max_j2}
+    \caption{Scatterplot über die maximale Pendelgeschwindigkeit}
+\end{figure}
+\subsection*{Pendelbeschleunigung $\dddot\Theta$}
+$\bm{\ddot\Theta}$ \textbf{max: }\\
+Es besteht eine positive Korrelatin zwischen der maximalen Pendelbeschleunigung und dem Trägheitsmoment des Schwungrades $J_2$ (Abb. \ref{fig:scatter_dotdottheta_max_j2}).\\
+
+$\bm{\ddot\Theta}$ \textbf{Settling Time: }\\
+Es lässt sich keine klare Korrelation erkennen.\\
+\begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Bilder/5_sensi/cm/dotdot_theta_max_J2.eps}
+        \caption{Korrelation Trägheitsmoment $J_2$}
+        \label{fig:scatter_dotdottheta_max_j2}
+    \caption{Scatterplot über die maximale Pendelbeschleunigung}
+\end{figure}
+\subsection*{Motormoment $\tau$}
+$\bm{\tau}$ \textbf{max: }\\Das maximale Motormoment ist positiv mit der Motorspannung $V_m$ (Abb. \ref{fig:scatter_tau_vmc}) korreliert.\\
+
+$\bm{\tau}$ \textbf{Settling Time: }\\
+Es besteht eine deutliche postitive Korrelation zwischen dem Trägheitsmoment des Schwungrades $J_2$ (Abb. \ref{fig:dotdot_phi_t_j2}) sowie eine neagtive Korrelation zwischen dem Reibungsfaktor $C_2$ (Abb. \ref{fig:scatter_tau_t_c2}) und der Einschwingzeit des Motormoments (Abb. \ref{}).\\
+\begin{figure}
+    \centering
+        \centering
+        \includegraphics[width=0.5\textwidth]{Bilder/5_sensi/cm/tau_max_vm.eps}
+        \caption{Korrelation Motorspannung $V_m$}
+        \label{fig:scatter_tau_vm}
+    \caption{Scatterplot über das maximale Motormoment}
+\end{figure}
+ 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dotdot_phi_t_c2.eps}
+        \caption{Korrelation Reibung $C_2$}
+        \label{fig:scatter_tau_t_c2}
+    \end{subfigure}
+   \begin{subfigure}[]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/5_sensi/cm/dotdot_phi_t_j2.eps}
+        \caption{Korrelation Trägheitsmoment $J_2$}
+        \label{fig:scatter_tau_t_j2}
+    \end{subfigure}
+    \caption{Scatterplots über die Einschwingzeit des Motormoments}
+\end{figure}
