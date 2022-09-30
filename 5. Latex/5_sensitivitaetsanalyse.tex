@@ -5,11 +5,7 @@ Es wird dabei die Auswirkung von der Varianz von bestimmten Modellparametern auf
 
 Ziel der Sensitivitätsanalyse ist es, wichtige Parameter zu identifizieren und daraus eine Optimierung der Parameter zu ermitteln.
 
-<<<<<<< HEAD
 Das Ergebnis der Sensitivitätsanalyse dient zum weiteren Verständnis des mathematischen Modells \bzw dem zugrundeliegenden Simulationsmodell.
-=======
-Das Ergebnis der Sensitivitätsanalyse dient zum weiteren Verständnis des mathematischen Modells bzw. dem zugrundeliegenden Simulationsmodell.
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 \subsection{Lokale und globale Sensitivitätsanalyse}
 
 Die verschiedenen Verfahren zur Sensitivitätsanalyse lassen sich in drei Kategorien einteilen: Lokale, globale Sensitivitätsanalyse und der sogenannten Screening-Methode.
@@ -29,7 +25,6 @@ Mathematisch entspricht dies den partiellen Ableitungen der Parameter bezüglich
     \item Standardabweichung benötigt Annahme zur Distribution und überspannt nicht den gesamten Wertebereich
 \end{itemize}
 
-<<<<<<< HEAD
 \subsubsection*{Ausdruck als Partielle-Ableitung}
 \begin{equation}
     sensitivity=\frac{\partial Y}{\partial X_i}
@@ -41,46 +36,22 @@ Dies macht es möglich, auch Abhängigkeiten unter den Parametern zu berücksich
 Ebenso werden die Parameter nicht nur über einen kleinen lokalen Bereich verändert, sondern über den gesamten Definitionsbereich.
 Dieser ist bei physikalischen Modellen meist nicht bekannt, sodass hierfür eine statistische Verteilung der Parameter angenommen werden muss.
 Dennoch sollte die Verteilung so gewählt werden, dass sie den tatsächlichen physikalisch möglichen Verteilungen möglichst nahekommt.
-=======
-\subsubsection*{Ausdruck als Partial-Ableitung}
-\begin{equation}
-    sensitivity=\frac{\partial Y}{\partial X_i}
-\end{equation}
-Für die Analytische Lösung wird ein lineares Modell benötigt. Die Linearisierung wurde zwar in Kap. \ref{sec:LMI} für dieses Modell durchgeführt, jeddoch soll im Rahmen dieser Arbeit nicht weiter darauf eingeganen werden.
-\subsubsection*{Globale Sensitivitätsanalyse}
-Bei der globlan Sensitivitätsanalyse wird, im gegensatz zur lokalen Sensitivitätsanalyse nicht nur ein Parameter variiert, sondern alle Parameter gleichzeitig.
-Dies macht es möglich auch Abhängigkeiten unter den Parametern zu berücksichtigen. \\
-Ebenso werden die Parameter nich nur über einen kelien lokalen Bereich verrändert, sodner über den gesammten Definitionsbereich.
-Dieser ist bei Physikalischen Modellen meist nicht bekannt, sodass hierfür eine statistische Verteilung der Parameter angenommen werden muss.
-Dennoch sollte die Verteilung so gewählt werden, dass sie den tatsächlichen physikalische möglichen Verteilungen möglichst nahe kommt.
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 
 Allerdings ist die globale Sensitivitätsanalyse sehr aufwendig und kann nur für kleine Modelle durchgeführt werden.\\
 
 \textbf{Monte Carlo Methode:}
 Die Monte Carlo Methode ist eine statistische Methode, die zur Lösung von Problemen mit mehreren Variablen eingesetzt wird.
 Sie generiert einen zufälligen Parameterraum und berechnet für diesen die Ausgangsgrößen.
-<<<<<<< HEAD
 Die so entstehenden Scatterplots können dann zur einfachen grafischen Analyse der Parameter verwendet werden.
-=======
-Die so enstehehnden Scatterplots können dann zur eifnachen graphischen Analyse der Parameter verwendet werden.
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 
 
 \subsection{Parameter}
 Aus den gesamten Modellparametern des Schwungradpendels (\ref{tab:Tabelle1.1}) werden folgende Parameter untersucht:
 \begin{itemize}
-<<<<<<< HEAD
     \item $C_1,\, C_2$
     \item $J_1,\, J_2$
     \item $m_1,\, m_2$
     \item $l_1,\, l_2$
-=======
-    \item $C1,\, C2$
-    \item $J1,\, J2$
-    \item $m1,\, m2$
-    \item $l1,\, l2$
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \item $V_m$
 \end{itemize}
 Es wird dabei die Auswirkung der Varianz genannter Parameter auf folgende Modellgrößen untersucht:
@@ -97,7 +68,6 @@ Es wird dabei die Auswirkung der Varianz genannter Parameter auf folgende Modell
 \subsection*{Modellantwort auf Eingangssprung}
 
 Um ein besseres Verständnis des Modells zu erlangen, wird die Antwort wichtiger Parameter auf einen Sprung der Motorspannung $V_{\mathrm{m}}$ betrachtet.
-<<<<<<< HEAD
 Zugrundeliegend ist das in \ref{sec:nichtlinearesZustandsraummodell} entwickelte Simulink-Modell.
 
 Der Eingangssprung der Motorspannung erfolgt in den Größen: $V_{\mathrm{m}}=\SI{5}{\volt},\SI{10}{\volt},\SI{15}{\volt},\SI{20}{\volt}$.
@@ -105,15 +75,6 @@ Das Pendel befindet sich dabei in Ruhelage ($\Theta=\SI{180}{\degree}$).
 Ein Eingangssprung führt zu einem Moment an der Motorwelle, welches das Schwungrad und das Pendel in Bewegung versetzt.\\
 
 \begin{figure}
-=======
-Zugrundeliegenden ist das in\,\ref{cap:nichtlinearesZustandsraummodell} entwickelte Simulink-Modell.
-
-Der Eingangsprung der Motorspannung erfolgt in den Größen: $V_{\mathrm{m}}=\SI{5}{\volt},\SI{10}{\volt},\SI{15}{\volt},\SI{20}{\volt}$.
-Das Pendel befindet sich dabei in Ruhelage ($\Theta=\SI{180}{\degree}$). 
-Ein Eingangsprung führt zu einem Moment an der Motorwelle, welches das Schwungrad und das Pendel in Bewegung versetzt.\\
-
-\begin{wrapfigure}{l}{.5\textwidth}
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \captionsetup[subfigure]{justification=centering,font=footnotesize}
     \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{Bilder/5_sensi/fig/Vm_sprung/phi_punkt.eps}
@@ -146,7 +107,6 @@ Ein Eingangsprung führt zu einem Moment an der Motorwelle, welches das Schwungr
         \label{fig:Vm_sprung_theta}
     \end{subfigure}
         \caption{Modellantwort auf Eingangssprung der Motorspannung}
-<<<<<<< HEAD
 \end{figure}
 In Abb.\,\ref{fig:Vm_sprung_phi_punkt} ist zu erkennen, dass der stabile Zustand der Endgeschwindigkeit des Schwungrades ungefähr zur selber Zeit ($t=\SI{0.5}{\s}$) erreicht wird.
 Die dabei erreichte Endgeschwindigkeit ist direkt abhängig von der angelegten Motorspannung $V_m$.\\
@@ -168,29 +128,6 @@ Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Paramete
 \pagebreak
 
 \begin{figure}
-=======
-\end{wrapfigure}
-In Abb.\,\ref{fig:Vm_sprung_phi_punkt} ist zu erkennen, dass der stabile Zustand der Endgeschwindigkeit des Schwungrades ungefähr zur selber Zeit ($t=\SI{0.5}{\s}$) erreicht wird.
-Die dabei erreichte Endgeschwindigkeit ist direkt abhängig von der angelegten Motorspannung $V_m$.\\
-Das Maximum des Motormomentes hängt dabei ebenso von der Höhe der angelegten Motorspannung $V_m$ ab (Abb. \ref{fig:Vm_sprung_tau}).
-Das Moment erzeugt dabei eine Beschleunigung des Schwungrades (Abb. \ref{fig:Vm_sprung_phi_punkt_punkt}), die ebenso durch das Moment in Abhängigkeit zur Höhe des angelegten Motorstroms steht.
-
-Das Pendel wird durch das Moment in Bewegung versetzt und schwingt in Eigenfrequenz (Abb. \ref{fig:Vm_sprung_theta}). 
-Die Amplitude der Pendelbewegung ist dabei abhängig von der Höhe der angelegten Motorspannung $V_m$.
-
-Die Pendelgeschwindigkeit (Abb. \ref{fig:Vm_sprung_theta_punkt}) hat ihren Nulldurchgang beim maximaler Amplitude des Pendelwinkels (Abb. \ref{fig:Vm_sprung_tau}), wobei die maximale Pendelgeschwindigkeit bei $\tau=\SI{180}{\degree}$ erreicht wird.
-
-Nach Erreichen der Endgeschwindigkeit des Schwungrades, geht die Beschleunigung gegen null und das Motormoment gleicht dem Reibungsmoment (Abb. \ref{fig:Vm_sprung_tau}).
-Das Pendel ist ab diesen Moment nur noch durch die Gravitation beeinflusst und schwing so lange bis es in Ruheposition zurückkehrt.
-
-\subsection*{Einfluss der Länge des Pendels zum Massezentrum des Schwungrades (l2)}
-Die Länge von der Aufhängung des Pendels bis zum Masseschwerpunkt des Schwungrades ($l2$) ist ein weiterer Parameter, er im Folgenden untersucht wird.
-In den Simulationen (Abb. \ref{fig:l2}) wurde der Parameter $l2$ von $\SI{0.1}{\m}$ bis $\SI{1.5}{\m}$ variiert.
-Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.
-\pagebreak
-
-\begin{wrapfigure}{l}{.5\textwidth}
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \captionsetup[subfigure]{justification=centering,font=footnotesize}
     \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{Bilder/5_sensi/fig/l2/phi_punkt.eps}
@@ -224,15 +161,9 @@ Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Paramete
     \end{subfigure}
         \caption{Modellantwort auf Varianz des Parameters: $l2$}
         \label{fig:l2}
-<<<<<<< HEAD
 \end{figure}
 Abbildung \ref{fig:l2_phi_punkt}, \ref{fig:l2_phi_punkt}, \ref{fig:l2_tau} zeigen keine Abweichung, was zeigt, dass der Parameter $l2$ keinen Einfluss auf die Modellgrößen $\dot\varphi,\ddot\varphi,\tau$ hat.
 Es ist jedoch ein Einfluss auf die Parameter $\Theta,\dot\Theta,\ddot\Theta$ (Abb.\,\ref{fig:l2_theta} \ref{fig:l2_theta_punkt} \ref{fig:l2_theta_punkt_punkt}) zu erkennen. 
-=======
-\end{wrapfigure}
-Abbildung \ref{fig:l2_phi_punkt}, \ref{fig:l2_phi_punkt}, \ref{fig:l2_tau} zeigen keine Abweichung, was zeigt das der Parameter $l2$ keinen Einfluss auf die Modellgrößen $\dot\varphi,\ddot\varphi,\tau$ hat.
-Es ist jedoch ein Einfluss auf die Parameter $\Theta,\dot\Theta,\ddot\Theta$ (Abb. \ref{fig:l2_theta}\ref{fig:l2_theta_punkt}\ref{fig:l2_theta_punkt_punkt}) zu erkennen. 
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 
 Bei kleinerer Länge $l2$ erhöht sich die Amplitude des Winkels $\Theta$ sowie dessen Geschwindigkeit $\dot\Theta$ und Beschleunigung $\ddot\Theta$. 
 
@@ -240,7 +171,6 @@ Ebenso ist zu erkennen, dass sich die Eigenfrequenz, mit der das Pendel schwing,
 Je größer die Länge $l2$ ist, desto größeres Moment muss aufgebracht werden, um die gleiche Winkelauslenkung $\Theta$ zu erreichen. 
 Daraus folgt, dass größere Pendellängen die Winkelantwort des Modells verschlechtern. 
 
-<<<<<<< HEAD
 \subsection*{Einfluss des Trägheitsmoments des Schwungrads ($J2$)}
 Der Einfluss des Trägheitsmoments des Schwungrades ($J2$), auf die Modellparameter wird in den Simulationen (Abb.\,\ref{fig:j2}) untersucht. 
 Der Parameter $J2$ wird dabei von $\SI{0.0005}{\kg\m^2}$ bis $\SI{0.008}{\kg\m^2}$ variiert.
@@ -248,15 +178,6 @@ Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Paramete
 \pagebreak
 
 \begin{figure}
-=======
-\subsection*{Einfluss des Trägheitsmoments des Schwungrads (J2)}
-Der Einfluss des Trägheitsmoments des Schwungrades ($J2$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:j2}) untersucht. 
-Der Parameter $J2$ wird dabei von $\SI{0.0005}{\kg\m^2}$ bis $\SI{0.008}{\kg\m^2}$ variiert.
-Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
-\pagebreak
-
-\begin{wrapfigure}{l}{0.5\textwidth}
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \captionsetup[subfigure]{justification=centering,font=footnotesize}
     \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{Bilder/5_sensi/fig/j2/phi_punkt.eps}
@@ -290,7 +211,6 @@ Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Paramete
     \end{subfigure}
         \caption{Modellantwort auf Varianz des Parameters: $J2$}
         \label{fig:j2}
-<<<<<<< HEAD
 \end{figure}
 Die stationäre Endgeschwindigkeit des Schwungrades, wird durch den Parameter $J2$ stark beeinflusst (Abb.\,\ref{fig:j2_phi_punkt}). 
 Bei erhöhter Trägheit des Schwungrades erhöht sich die Anstiegszeit, bis ein eingeschwungener Zustand erreicht wird.
@@ -312,29 +232,6 @@ Dies ist ebenso der Fall bei der Pendelbeschleunigung (Abb.\,\ref{fig:j2_theta_p
  Der Parameter $J2$ wird dabei von $\SI{0.01}{\kg}$ bis $\SI{1.5}{\kg}$ variiert.
  Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab.\,\ref{tab:Tabelle1.1} festgelegt.\\
  \begin{figure}
-=======
-\end{wrapfigure}
-Die stationäre Endgeschwindigkeit des Schwungrades, wird durch den Parameter $J2$ stark beeinflusst (Abb. \ref{fig:j2_phi_punkt}). 
-Bei erhöhter Trägheit des Schwungrades erhöht sich die Anstiegszeit, bis ein eingeschwungener Zustand erreicht wird.
-Der Wert konvergiert allerdings bei allen Werten von $J2$ gegen die gleiche Endgeschwindigkeit.\\
-
-Die Beschleunigung des Schwungrades wird ebenfalls stark beeinflusst (Abb. \ref{fig:j2_phi_punkt_punkt}).
-Hierbei ist zu erkennen, dass ein erhöhtes Trägheitsmoment die maximale Beschleunigung bei $t\approx\SI{0}{\s}$ verringert. 
-Ebenso wird der stationäre Zustand später erreicht und mit weiterer Erhöhung des Parameters ist ein Schwingen der Beschleunigung zu erkennen.\\
-   
-Das maximale Motormoment (Abb. \ref{fig:j2_tau}) ist bei allen Werten von $J2$ gleich, benötigt aber bei größeren Werten von $J2$ länger, um den stationären Zustand zu erreichen.\\
-Dadurch, dass das Moment bei erhöhten Trägheitsmoment länger anliegt, wird auch eine größere Kraft auf das Pendel ausgeübt(Abb. \ref{fig:j2_theta_punkt_punkt}).\\
-In Abb.\ref{fig:j2_theta} ist zu erkennen, dass ein größerer Winkelausschlag des Pendels erreicht wurde.\\
-Dies ist ebenso der Fall bei der Pendelbeschleunigung (Abb. \ref{fig:j2_theta_punkt_punkt}) und der Pendelgeschwindigkeit (Abb. \ref{fig:j2_theta_punkt}).\\
-
- Das Trägheitsmoment des Schwungrades $J2$ hat also einen positiven Einfluss auf die Winkelantwort des Modells.\\  
- 
- \subsection*{Einfluss der Masse des Schwungrads (M2)}
- Der Einfluss der Masse des Schwungrades ($m2$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:m2}) untersucht. 
- Der Parameter $J2$ wird dabei von $\SI{0.01}{\kg}$ bis $\SI{1.5}{\kg}$ variiert.
- Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
- \begin{wrapfigure}{l}{0.5\textwidth}
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \captionsetup[subfigure]{justification=centering,font=footnotesize}
     \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{Bilder/5_sensi/fig/m2/phi_punkt.eps}
@@ -368,41 +265,23 @@ Dies ist ebenso der Fall bei der Pendelbeschleunigung (Abb. \ref{fig:j2_theta_pu
     \end{subfigure}
         \caption{Modellantwort auf Varianz des Parameters: $M2$}
         \label{fig:m2}
-<<<<<<< HEAD
 \end{figure}
 In den Simulationen ist zu erkennen, dass die Schwungradgeschwindigkeit (\ref{fig:m2_phi_punkt}), die Schwungradbeschleunigung (\ref{fig:m2_phi_punkt_punkt}) und das Motormoment (\ref{fig:m2_tau}) durch den Parameter $m2$ nicht beeinflusst werden.\\
 Die Masse des Schwungrads hat also auf die gehaltenen Größen keinen Einfluss.\\
 
 Der Winkel des Pendels (Abb.\,\ref{fig:m2_theta}) verringert sich mit Erhöhung der Masse $m2$. 
 Dies ist auch bei der Pendelgeschwindigkeit (Abb.\,\ref{fig:m2_theta_punkt}) und der Pendelbeschleunigung (Abb.\,\ref{fig:m2_theta_punkt_punkt}) zu erkennen.\\
-=======
-\end{wrapfigure}
-In den Simulationen ist zu erkennen, dass die Schwungradgeschwindigkeit (\ref{fig:m2_phi_punkt}), die Schwungradbeschleunigung (\ref{fig:m2_phi_punkt_punkt}) und das Motormoment (\ref{fig:m2_tau}) durch den Parameter $m2$ nicht beeinflusst werden.\\
-Die Masse des Schwungrads hat also auf die gehaltenen Größen keinen Einfluss.\\
-
-Der Winkel des Pendels (Abb. \ref{fig:m2_theta}) verringert sich mit Erhöhung der Masse $m2$. 
-Dies ist auch bei der Pendelgeschwindigkeit (Abb. \ref{fig:m2_theta_punkt}) und der Pendelbeschleunigung (Abb. \ref{fig:m2_theta_punkt_punkt}) zu erkennen.\\
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 Dies liegt an der, durch die zusätzliche Masse, erhöhten Gewichtskraft, die auf das Pendel wirkt.\\
 Ebenso wird die Dämpfung der Schwingung verändert und die Schwingungsdauer verlängert sich.\\
 
 Die Erhöhung des Parameters $m2$ trägt also zu einer Verschlechterung der Modellantwort bei.
 
-<<<<<<< HEAD
 \subsection*{Einfluss der Reibung des Pendels ($C1$)}
 Der Einfluss der Reibung des Pendels ($C1$), auf die Modellparameter wird in den Simulationen (Abb.\,\ref{fig:c1}) untersucht. 
 Der Parameter $C1$ wird dabei von $\SI{0.01}{\newton\meter\second\per\radian}$ bis $\SI{1.5}{newton\meter\second\per\radian}$ variiert.
 Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab.\,\ref{tab:Tabelle1.1} festgelegt.\\
 
  \begin{figure}
-=======
-\subsection*{Einfluss der Reibung des Pendels (C1)}
-Der Einfluss der Reibung des Pendels ($C1$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:c1}) untersucht. 
-Der Parameter $C1$ wird dabei von $\SI{0.01}{\newton\meter\second\per\radian}$ bis $\SI{1.5}{newton\meter\second\per\radian}$ variiert.
-Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
-
- \begin{wrapfigure}{l}{0.5\textwidth}
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \captionsetup[subfigure]{justification=centering,font=footnotesize}
     \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{Bilder/5_sensi/fig/c1/phi_punkt.eps}
@@ -436,7 +315,6 @@ Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Paramete
     \end{subfigure}
         \caption{Modellantwort auf Varianz des Parameters: $C1$}
         \label{fig:c1}
-<<<<<<< HEAD
 \end{figure}
 
 Die Schwungradgeschwindigkeit (Abb.\,\ref{fig:c1_phi_punkt}) und die Schwungradbeschleunigung (Abb.\,\ref{fig:c1_phi_punkt_punkt}) werden durch den Parameter $C1$ nicht beeinflusst.\\
@@ -454,24 +332,6 @@ Der Parameter $C2$ wird dabei von $\SI{0.0001}{\newton\meter\second\per\radian}$
 Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab.\,\ref{tab:Tabelle1.1} festgelegt.\\
  
 \begin{figure}
-=======
-\end{wrapfigure}
-
-Die Schwungradgeschwindigkeit (Abb. \ref{fig:c1_phi_punkt}) und die Schwungradbeschleunigung (Abb. \ref{fig:c1_phi_punkt_punkt}) werden durch den Parameter $C1$ nicht beeinflusst.\\
-Ebenso wird das Motormoment (\ref{fig:c1_tau}) durch die Reibung des Pendels nicht beeinflusst.\\
-
-In der Pendelauslenkung (Abb. \ref{fig:c1_tau}) ist der Einfluss der Reibung deutlich zu erkennen. Je höher der Reibungskoeffizient, desto kleiner wird die Pendelauslenkung.\\
-Ebenso wird, wie zu erwarten, die Pendelgeschwindigkeit (Abb. \ref{fig:c1_theta_punkt}) und die Pendelbeschleunigung (Abb. \ref{fig:c1_theta_punkt_punkt}) durch die Reibung des Pendels gedämpft.\\
-Daraus lässt sich schließen, dass ein Teil des Momentes benötigt wird, um die Reibung zu überkommen. 
-
-Die Erhöhung des Parameters $C1$ trägt also zu einer Verschlechterung der Modellantwort bei.
-\subsection*{Einfluss der Reibung des Schwungrades (C2)}
-Der Einfluss der Reibung des Schwungrades ($C2$), auf die Modellparameter wird in den Simulationen (Abb. \ref{fig:c2}) untersucht. 
-Der Parameter $C2$ wird dabei von $\SI{0.0001}{\newton\meter\second\per\radian}$ bis $\SI{0.1}{\newton\meter\second\per\radian}$ variiert.
-Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Parameter werden ebenfalls auf die Standardwerte in Tab. \ref{tab:Tabelle1.1} festgelegt.\\
- 
-\begin{wrapfigure}{l}{0.5\textwidth}
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \captionsetup[subfigure]{justification=centering,font=footnotesize}
     \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{Bilder/5_sensi/fig/c2/phi_punkt.eps}
@@ -505,7 +365,6 @@ Die Motorspannung wird dabei auf \SI{10}{\volt} gesetzt und die anderen Paramete
     \end{subfigure}
         \caption{Modellantwort auf Varianz des Parameters: $C2$}
         \label{fig:c2}
-<<<<<<< HEAD
 \end{figure}
 
 Die Schwungradgeschwindigkeit (Abb.\,\ref{fig:c2_phi_punkt}) wird durch die Reibung des Schwungrades stark beeinflusst. Je höher der Reibungskoeffizient, desto kleiner wird die maximale Schwungradgeschwindigkeit.\\
@@ -517,33 +376,14 @@ Dadurch wird auch das Motormoment (Abb.\,\ref{fig:c2_tau}) beeinflusst. Je höhe
 Infolgedessen stellt sich ein konstantes Motormoment ein.
 
 Das nun fehlende Motormoment macht sich auch in der Pendelgeschwindigkeit (Abb.\,\ref{fig:c2_theta_punkt}), der Pendelbeschleunigung (\ref{fig:c2_theta_punkt_punkt}) und dem Pendelwinkel (Abb.\,\ref{fig:c2_theta}) bemerkbar.\\
-=======
-\end{wrapfigure}
-
-Die Schwungradgeschwindigkeit (Abb. \ref{fig:c2_phi_punkt}) wird durch die Reibung des Schwungrades stark beeinflusst. Je höher der Reibungskoeffizient, desto kleiner wird die maximale Schwungradgeschwindigkeit.\\
-Die Reibung wirkt ebenfalls dämpfend auf Schwingung in der Geschwindigkeit und die Geschwindigkeit erreicht bei höher Reibung schneller ihren stabilen Endwert.\\
-
-Die Schwungradbeschleunigung (Abb. \ref{fig:c2_phi_punkt_punkt}) wird ebenfalls durch die Reibung beeinflusst. Die maximale Beschleunigung um $t\approx\SI{0}{\s}$ ist unabhängig von $C2$, jedoch fällt sie schneller ab, je höher der Reibungskoeffizient ist.\\
-
-Dadurch wird auch das Motormoment (Abb. \ref{fig:c2_tau}) beeinflusst. Je höher der Reibungskoeffizient, desto mehr Moment muss der Motor im stabilen Zustand aufbringen, um die Reibung zu überwinden.\\
-Infolgedessen stellt sich ein konstantes Motormoment ein.
-
-Das nun fehlende Motormoment macht sich auch in der Pendelgeschwindigkeit (Abb. \ref{fig:c2_theta_punkt}), der Pendelbeschleunigung (\ref{fig:c2_theta_punkt_punkt}) und dem Pendelwinkel (Abb. \ref{fig:c2_theta}) bemerkbar.\\
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 Je höher der Reibungskoeffizient $C2$ desto geringer die Amplituden.
 Die Eigenfrequenz wird nicht beeinflusst.\\
 
 Damit ist der Reibungskoeffizient $C2$ ein wichtiger Parameter, der alle wichtigen Modellgrößen beeinflusst.
 \pagebreak
-<<<<<<< HEAD
 \subsection*{Überblick wichtiger Parameter und deren beeinflusste Modellgrößen}
 Im Folgenden wird ein Überblick über die wichtigsten Parameter und deren beeinflussten Modellgrößen gegeben.\\
 Dabei handelt es sich um keine gewichtete Liste, sondern nur ein Überblick aus den Parametern, die speziellen Modellgrößen Beeinflussen.
-=======
-\subsection*{Überblick wichtiger Parameter und deren beinflusste Modellgrößen}
-Im folgenden wird ein Überblick über die wichtigsten Parameter und deren beinflussten Modellgrößen gegeben.\\
-Dabei handelt es sich um keine gewichtete Liste, sondern nur ein Überblcik aus den Parametern die die speziellen Modelgrößen Beinflussen.
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 
 
 \begin{minipage}[t]{.5\textwidth}
@@ -551,41 +391,23 @@ Dabei handelt es sich um keine gewichtete Liste, sondern nur ein Überblcik aus 
         \item Schwungradgeschwindigkeit $\dot\varphi$
         \begin{itemize}
             \item $V_m$
-<<<<<<< HEAD
             \item $J_2$
             \item $C_2$
-=======
-            \item $J2$
-            \item $C2$
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
         \end{itemize}
         \item Schwungradbeschleunigung $\ddot\varphi$
         \begin{itemize}
             \item $V_m$
-<<<<<<< HEAD
             \item $J_2$
             \item $C_2$
-=======
-            \item $J2$
-            \item $C2$
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
         \end{itemize}
         \item Pendelbeschleunigung $\ddot\Theta$
         \begin{itemize}
             \item $V_m$
-<<<<<<< HEAD
             \item $l_2$
             \item $J_2$
             \item $m_2$
             \item $C_1$
             \item $C_2$
-=======
-            \item $l2$
-            \item $J2$
-            \item $m2$
-            \item $C1$
-            \item $C2$
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
         \end{itemize}
         \end{itemize}
 \end{minipage}
@@ -594,52 +416,30 @@ Dabei handelt es sich um keine gewichtete Liste, sondern nur ein Überblcik aus 
     \item Motormoment $\tau$
     \begin{itemize}
         \item $V_m$
-<<<<<<< HEAD
         \item $J_2$
         \item $C_2$
-=======
-        \item $J2$
-        \item $C2$
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \end{itemize}
     \item Pendelgeschwindigkeit $\dot\Theta$
     \begin{itemize}
         \item $V_m$
-<<<<<<< HEAD
         \item $l_2$
         \item $J_2$
         \item $m_2$
         \item $C_1$
         \item $C_2$
-=======
-        \item $l2$
-        \item $J2$
-        \item $m2$
-        \item $C1$
-        \item $C2$
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \end{itemize}
     \item Pendelwinkel $\Theta$
     \begin{itemize}
         \item $V_m$
-<<<<<<< HEAD
         \item $l_2$
         \item $J_2$
         \item $m_2$
         \item $C_1$
         \item $C_2$ 
-=======
-        \item $l2$
-        \item $J2$
-        \item $m2$
-        \item $C1$
-        \item $C2$ 
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
     \end{itemize}
 \end{itemize}
 \end{minipage}
 
-<<<<<<< HEAD
 Besonders wichtige Parameter sind:
 \begin{itemize}
     \item Länge des Pendels zum Massenschwerpunkt $l_2$
@@ -651,20 +451,6 @@ All diese Parameter beeinflussen die wichtigsten Modellgrößen wie Pendelgeschw
 \section{Globale Sensitivitätsanalyse nach Monte Carlo Methode}
 Bei der globale Sensitivitätsanalyse mit der Monte Carlo Methode werden die Parameter in einem bestimmten Bereich zufällig gewählt und die Modellgrößen berechnet.\\
 Da es sich um eine Vielzahl von Parameter und Modellgrößen handelt, müssen viele Simulationen durchgeführt werden.\\
-=======
-Besonders Wichtige Parameter sind:
-\begin{itemize}
-    \item Länge des Pendels zum Massenschwerpunkt $l2$
-    \item Trägheitsmoment des Schwungrades $J2$
-    \item Reibung des Schwungrades $C2$
-    \item  Reibung des Pendels $C1$
-\end{itemize}
-All diese Parameter Beinflussen die wichtigsten Modelgrößen wie Pendelgeschwindigkeit, Pendelbeschleunigung und Pendelwinkel.\\
-
-\section{Globale Sensitivitätsanalyse nach Monte Carlo Methode}
-Bei der globale Sensitivitätsanalyse mit der Monte Carlo Methode werden die Parameter in einem bestimmten Bereich zufällig gewählt und die Modellgrößen berechnet.\\
-Da es sich um eine Vielzahl von Paramter und Modellgrößen handelt, müssen viele Simulationen durchgeführt werden.\\
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 \begin{table}[H]
     \centering
     \begin{tabular}{|lll|}
@@ -694,30 +480,17 @@ Die Ergebnisse werden als Scatterplots dargestellt.\\
     \caption{Scatterplot über alle Parameter}
     \label{fig:scatter}
 \end{figure}
-<<<<<<< HEAD
 Betrachtet man die Simulation über den gesamten Parameterraum (Abb. \ref{fig:scatter}), können einige eindeutige Korrelationen erkannt werden.
 Bei Scatterplots ohne deutliche Korrelation lässt sich keine Beeinflussung der Modellgrößen durch den gegebenen Parameter feststellen.
 
 \subsection*{Schwungradgeschwindigkeit $\dot\varphi$}
 $\bm{\dot\varphi}$ \textbf{max: }\\
 Bei der maximalen Schwungradgeschwindigkeit gibt es zwei Parameter, die die Modellgröße signifikant beeinflussen.\\
-=======
-Betrachtet man die Simulation über den gesammten Parameterraum (\ref{fig:scatter}), können einige eindeutige Korrelationen erkannt werden.
-Bei Scatterplots ohne deutliche Korrelation lässt sich keine Beinflussung der Modellgrößen durch den gegebenen Parameter feststellen.
-
-\subsection*{Schwungradgeschwindigkeit $\dot\varphi$}
-$\bm{\dot\varphi}$ \textbf{max: }\\
-Bei der maximalen Schwungradgeschwindigkeit gibt es zwei Parameter die die Modellgröße signifikant beeinflussen.\\
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 Dabei handelt es sich um die Motorspannung $V_{\mathrm{m}}$(Abb. \ref{fig:scatter_dotphi_max}) und die Reibung des Schwungrades $C_2$ (Abb. \ref{fig:scatter_dotphi_c2}).
 Mit der definierten Varianz hat die Motorspannung einen größeren Einfluss, ist aber in Abhängigkeit von der Reibung des Schwungrades.\\
 
 $\bm{\dot\varphi}$ \textbf{Settling Time: }\\
-<<<<<<< HEAD
 Bei der Settling Time gibt es zwei Parameter, die  eine Korrelation erkennen lassen.
-=======
-Bei der Settling Time gibt es zwei Parameter die  eine Korrelation erkennen lassen.
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{fig:scatter_dotphi_t_j2}) ist positiv und die Reibung des Schwungrades $C_2$ (Abb.\ref{fig:scatter_dotphi_t_c2}) negativ mit der Einschwingzeit korreliert.
 \begin{figure}
     \centering
@@ -754,19 +527,11 @@ Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{fig:scatter_dotphi_t_j2}) 
 \end{figure}
 \subsection*{Schwungradbeschleunigung $\ddot\varphi$}
 $\bm{\ddot\varphi}$ \textbf{max: }\\
-<<<<<<< HEAD
 Bei der maximalen Schwungradbeschleunigung gibt es eine deutliche Korrelation.
 Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{fig:scatter_dotdotphi_max_j2}) ist negativ mit der maximalen Schwungradbeschleunigung korreliert.\\
 
 $\bm{\ddot\varphi}$ \textbf{Settling Time: }\\
 Es gibt eine deutliche positive Korrelation zwischen dem Trägheitsmoment des Schwungrades $J_2$ und der Einschwingzeit der Schwungradbeschleunigung (Abb. \ref{fig:scatter_dodottphi_t_j2}).\\
-=======
-Bei der maximalen Schwungradbeschleunigung gibt es eine deutlichhe Korrelation.
-Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{scatter_dotdotphi_max_j2}) ist negativ mit der maximalen Schwungradbeschleunigung korreliert (Abb. \ref{}).\\
-
-$\bm{\ddot\varphi}$ \textbf{Settling Time: }\\
-Es gibt eine deutliche postitive korrelation zwischen dem Trägheitsmoment des Schwungrades $J_2$ und der Einschwingzeit der Schwungradbeschleunigung (Abb. \ref{fig:scatter_dodottphi_t_j2}).\\
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 Eine leicht negative Korrelation gibt es zwischen der Reibung des Schwungrades $C_2$ und der Einschwingzeit der Schwungradbeschleunigung (Abb. \ref{fig:scatter_dotdotphi_t_c2}).\\
 \begin{figure}
     \centering
@@ -796,11 +561,7 @@ Eine leicht negative Korrelation gibt es zwischen der Reibung des Schwungrades $
 \subsection*{Pendelauslenkung $\Theta$}
 $\bm{\Theta}$ \textbf{max: }\\
 Das Trägheitsmoment des Schwungrades $J_2$ (Abb.\ref{fig:scatter_theta_max_j2}) sowie die Motorspannung $V_m$ (Abb. \ref{fig:scatter_theta_max_Vm}) sind positiv mit der maximalen Pendelauslenkung korreliert.\\
-<<<<<<< HEAD
 Die Länge $l_2$ ist negativ mit der maximalen Pendelauslenkung korreliert (Abb. \ref{fig:scatter_theta_max_l2}).\\
-=======
-Die Länge $l_2$ ist neagitv mit der maximalen Pendelauslenkung korreliert (Abb. \ref{fig:scatter_theta_max_l2}).\\
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 $\bm{\Theta}$ \textbf{Settling Time: }\\
 Bei der Pendeleinschwingzeit gibt es den negativ korrelierten Parameter \glqq Reibung des Pendels $C_1$\grqq{},
 \begin{figure}
@@ -861,17 +622,10 @@ Es lässt sich keine klare Korrelation erkennen.\\
     \caption{Scatterplot über die maximale Pendelbeschleunigung}
 \end{figure}
 \subsection*{Motormoment $\tau$}
-<<<<<<< HEAD
 $\bm{\tau}$ \textbf{max: }\\Das maximale Motormoment ist positiv mit der Motorspannung $V_m$ (Abb. \ref{fig:scatter_tau_vm}) korreliert.\\
 
 $\bm{\tau}$ \textbf{Settling Time: }\\
 Es besteht eine deutliche positive Korrelation zwischen dem Trägheitsmoment des Schwungrades $J_2$ (Abb. \ref{fig:scatter_tau_t_j2}) sowie eine negative Korrelation zwischen dem Reibungsfaktor $C_2$ (Abb. \ref{fig:scatter_tau_t_c2}) und der Einschwingzeit des Motormoments.\\
-=======
-$\bm{\tau}$ \textbf{max: }\\Das maximale Motormoment ist positiv mit der Motorspannung $V_m$ (Abb. \ref{fig:scatter_tau_vmc}) korreliert.\\
-
-$\bm{\tau}$ \textbf{Settling Time: }\\
-Es besteht eine deutliche postitive Korrelation zwischen dem Trägheitsmoment des Schwungrades $J_2$ (Abb. \ref{fig:dotdot_phi_t_j2}) sowie eine neagtive Korrelation zwischen dem Reibungsfaktor $C_2$ (Abb. \ref{fig:scatter_tau_t_c2}) und der Einschwingzeit des Motormoments (Abb. \ref{}).\\
->>>>>>> ccf88e87aedbdd031b312c4a0ee7969696ddeb41
 \begin{figure}
     \centering
         \centering

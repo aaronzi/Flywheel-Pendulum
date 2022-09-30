@@ -263,12 +263,12 @@ Um eine geeignete Reglerstruktur zu entwerfen, werden zuerst die \textbf{Polstel
 
 Der zu entwerfender Regler muss in der Lage sein, die maximal zulässige Eingangsspannung von $V_{\mathrm{m,Max}} = 20V$ auszureizen, jedoch nicht zu überschreiten, um größtmögliche Winkeländerungen von der definierten instabilen Ruhelage ausgleichen zu können. Die Simulationen werden mithilfe der Matlab-Erweiterung \textbf{Simulink} durchgeführt. Die Reglerstruktur ist in \autoref{fig:Bild7.5} dargestellt. Das linearisierte Zustandsraummodell verwendet gemäß Definition Delta-Größen, welche bei der Anwendung des linearen Reglers am nichtlinearen Modell berücksichtigt werden müssen. Da die entstehende K-Matrix eine Größe von (1x4) besitzt, wird fortan die Vektorschreibweise $k$ bevorzugt.
 
-%\begin{figure}[H]
- %  \centering
- %  \fbox{\includegraphics[width=0.95\textwidth]{Bilder/7_zustandsregler/Reglerstruktur_Simulink.pdf}}
- %  \caption[Simulink-Reglerstruktur]{Simulink-Reglerstruktur}
- %  \label{fig:Bild7.5}
-%\end{figure}
+\begin{figure}[H]
+   \centering
+   \fbox{\includegraphics[width=0.95\textwidth]{Bilder/7_zustandsregler/Reglerstruktur_Simulink.pdf}}
+   \caption[Simulink-Reglerstruktur]{Simulink-Reglerstruktur}
+   \label{fig:Bild7.5}
+\end{figure}
 
 Im ersten Versuch wird nur die Decay-Rate $\alpha$ variiert (vgl. \autoref{fig:Bild7.2}). Der Startwinkel des Pendels wird von 15$^\circ$ solange verringert, bis der Maximalwert der anliegenden Eingangsspannung $V_{\mathrm{m}} \leq 20V$ erreicht. Zur Übersicht der Ergebnisse dient \autoref{tab:Tabelle7.1}.
 
