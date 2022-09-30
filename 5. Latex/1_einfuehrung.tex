@@ -4,7 +4,7 @@
 Inhalt dieser Belegarbeit ist die Modellierung eines inversen Pendels, welches über ein Schwungrad regelungstechnisch in der aufrechten Position stabil gehalten werden soll. \\
 
 Diese Arbeit geht dabei im ersten Abschnitt auf den \textbf{Versuchsaufbau} und die \textbf{Modellierung} des Pendels ein. Es schließt sich eine \textbf{Sensitivitäts- und Parameteranalyse} an, über welche der Einfluss bestimmter Modellgrößen auf das Verhalten des Systems untersucht wird. \\
-Nachdem das Modell aufgestellt und auf seine Eigenschaften analysiert wurde, folgt die Implementierung als Simulation in Matlab/Simulink. Dafür soll zunächst das \textbf{Aufschwingen des Pendels}. umgesetzt werden. Kann das Pendel bis in einen bestimmten Bereich um die obere Ruhelage bewegt werden, übernimmt ein \textbf{einfacher Zustandsregler}, welcher ebenfalls in dieser Arbeit entworfen wird. \\
+Nachdem das Modell aufgestellt und auf seine Eigenschaften analysiert wurde, folgt die Implementierung als Simulation in Matlab/Simulink. Dafür soll zunächst das \textbf{Aufschwingen des Pendels} umgesetzt werden. Kann das Pendel bis in einen bestimmten Bereich um die obere Ruhelage bewegt werden, übernimmt ein \textbf{einfacher Zustandsregler}, welcher ebenfalls in dieser Arbeit entworfen wird. \\
 Abschließend wird ein \textbf{Beobachter} umgesetzt, über welchen die nicht messbaren Zustände des Systems rekonstruiert werden können, um den Regler am realen Versuch in Betrieb zu nehmen.
 
 Nachfolgend findet sich die Darstellung der Modellparameter/Konstanten zur Modellierung des Schwungrad-Pendels (siehe \autoref{tab:Tabelle1.1}).
@@ -33,9 +33,9 @@ Nachfolgend findet sich die Darstellung der Modellparameter/Konstanten zur Model
     \label{tab:Tabelle1.1}
 \end{table}
 
-Ziel der Arbeit soll es sein, anhand von Beispielparametern eine effektive Regelung umzusetzen, welche später bei der Übernahme auf einen realen Versuchsaufbau einfach adaptiert werden kann. Dazu ist es wichtig ein gutes Modell umzusetzen und den Einfluss der verschiedenen Modell- und Regelparameter auf das Verhalten des Systems zu kennen. \\
+Ziel der Arbeit soll es sein, anhand von Beispielparametern eine effektive Regelung umzusetzen, welche später bei der Übernahme auf einen realen Versuchsaufbau einfach adaptiert werden kann. Dazu ist es wichtig, ein gutes Modell umzusetzen und den Einfluss der verschiedenen Modell- und Regelparameter auf das Verhalten des Systems zu kennen. \\
 
-\autoref{fig:Bild1.1} zeigt den modellhaften Versuchsaufbau. Das System besteht aus einem Pendel und einem Schwungrad. Das Pendel kann frei rotieren um die 0z-Achse, die senkrecht zur 0xy-Ebene steht. Das Schwungrad wird durch einen Gleichstrommotor angetrieben und dreht sich um eine Achse parallel zur 0z-Achse. Das Pendel kann durch die Reaktionskraft ausbalanciert werden, die durch das Schwungrad erzeugt wird.
+\autoref{fig:Bild1.1} zeigt den modellhaften Versuchsaufbau. Das System besteht aus einem Pendel und einem Schwungrad. Das Pendel kann frei um die 0z-Achse rotieren, die senkrecht zur 0xy-Ebene steht. Das Schwungrad wird durch einen Gleichstrommotor angetrieben und dreht sich um eine Achse parallel zur 0z-Achse. Das Pendel kann durch die Reaktionskraft ausbalanciert werden, die durch das Schwungrad erzeugt wird.
 
 \begin{figure}[H]
    \centering

@@ -12,28 +12,28 @@ Der folgende Abschnitt beschäftigt sich mit der Modellierung des Schwungrad-Pen
     \label{fig:Bild2.1}
 \end{figure}
 
-\autoref{fig:Bild2.1} zeigt das Ersatzschaltbild des Gleichstrommotors am Schwungrad-Pendel. Das zweite Kirchhoff'sche Gesetzt ergibt folgende Gleichung:
+\autoref{fig:Bild2.1} zeigt das Ersatzschaltbild des Gleichstrommotors am Schwungrad-Pendel. Das zweite Kirchhoff'sche Gesetz ergibt folgende Gleichung:
 
 \begin{equation} \label{eq:Gleichung2.1}
-    V_{\mathrm{m}} = i_{\mathrm{a}} R_{\mathrm{a}} + L_{\mathrm{a}} \frac{di_{\mathrm{a}}}{dt} + E_{\mathrm{b}}
+    V_{\mathrm{m}} = i_{\mathrm{a}} \cdot R_{\mathrm{a}} + L_{\mathrm{a}} \cdot \frac{di_{\mathrm{a}}}{dt} + E_{\mathrm{b}}
 \end{equation}
 \newline
 Die gegenelektromotorische Kraft (EMK) hängt von der Winkelgeschwindigkeit $\dot\varphi$ und der Gegen-EMK-Konstante $K_{\mathrm{b}}$ wie folgt ab:
 
 \begin{equation} \label{eq:Gleichung2.2}
-    E_{\mathrm{b}} = K_{\mathrm{b}} \dot\varphi
+    E_{\mathrm{b}} = K_{\mathrm{b}} \cdot \dot\varphi
 \end{equation}
 \newline
-Angenommen die Wirkung der Induktivität ist sehr klein ($L_{\mathrm{a}} \ll R_{\mathrm{a}}$), \autoref{eq:Gleichung2.1} ergibt sich zu
+Wird angenommen, dass die Wirkung der Induktivität um ein Vielfaches kleiner ist, als die Wirkung der Resistanz ($L_{\mathrm{a}} \ll R_{\mathrm{a}}$), kann die \autoref{eq:Gleichung2.1} zur Berechnung des Stromes umgestellt werden und \autoref{eq:Gleichung2.3} folgt.
 
 \begin{equation} \label{eq:Gleichung2.3}
-    i_{\mathrm{a}} = \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}}.
+    i_{\mathrm{a}} = \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \cdot \dot\varphi}{R_{\mathrm{a}}}
 \end{equation}
 \newline
 Das Motordremoment $\tau$ ist mit dem Ankerstrom $i_{\mathrm{a}}$ durch eine Motordrehmomentkonstante $K_{\mathrm{t}}$ verbunden. Die Modellgleichung des Gleichstrommotors ergibt sich somit zu:
 
 \begin{equation} \label{eq:Gleichung2.4}
-    \boxed{\tau = K_{\mathrm{t}} i_{\mathrm{a}} = K_{\mathrm{t}} \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}}}
+    \boxed{\tau = K_{\mathrm{t}} \cdot i_{\mathrm{a}} = K_{\mathrm{t}} \cdot \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \cdot \dot\varphi}{R_{\mathrm{a}}}}
 \end{equation}
 
 \subsection{Modellierung des Schwungrad-Pendels}
@@ -71,7 +71,7 @@ Somit bleiben am Ende noch zwei Freiheitsgrade (FHG) übrig.
 Aus den verbliebenen Freiheitsgraden werden die generalisierten Koordinaten abgeleitet. Dabei gilt grundsätzlich folgender Zusammenhang im $\mathbb{R}^2$:
 
 \begin{equation} \label{eq:Gleichung2.6}
-    \boxed{S = 2n - k}
+    \boxed{S = 2\cdot n - k}
 \end{equation}
 \newline
 mit $S$ als Anzahl der Freiheitsgrade und somit auch der Anzahl der generalisierten Koordinaten, $n$ der Anzahl der Teilchen und $k$ der Anzahl der holonomen Zwangsbedingungen.\\
@@ -84,12 +84,12 @@ Die beiden Generalisierten Koordinaten sind somit:
 
 \subsubsection{Berechnung der kinetischen und potentiellen Energie}
 
-Für die Lagrange-Formulierung werden die kinetische und die potentielle Energie des Systems benötigt. Die kinetische Energie setzt sich zusammen aus der translatorischen kinetischen Energie $E_{\mathrm{kin,trans}}$ und der rotatorischen kinetischen Energie $E_{\mathrm{kin,rot}}$. Die Gleichungen sind nachfolgend aufgestellt.
+Für die Lagrange-Formulierung werden die kinetische und die potentielle Energie des Systems benötigt. Die kinetische Energie setzt sich aus der translatorischen kinetischen Energie $E_{\mathrm{kin,trans}}$ und der rotatorischen kinetischen Energie $E_{\mathrm{kin,rot}}$ zusammen. Die Gleichungen sind nachfolgend aufgestellt.
 
 \begin{align} \label{eq:Gleichung2.7}
     \begin{split}
-        E_{\mathrm{kin,trans}} &= \frac{1}{2} m_1 (l_1\dot\theta)^2 + \frac{1}{2}m_2 (l_2\dot\theta)^2 \\
-        E_{\mathrm{kin,rot}} &= \frac{1}{2} J_1 (\dot\theta)^2 + \frac{1}{2} J_2 (\dot\theta + \dot\varphi)^2
+        E_{\mathrm{kin,trans}} &= \frac{1}{2} \cdot m_1 \cdot (l_1\cdot\dot\theta)^2 + \frac{1}{2}\cdot m_2\cdot(l_2\cdot \dot\theta)^2 \\
+        E_{\mathrm{kin,rot}} &= \frac{1}{2}\cdot J_1\cdot\dot\theta^2 + \frac{1}{2}\cdot J_2\cdot(\dot\theta + \dot\varphi)^2
     \end{split}
 \end{align}
 \newline
@@ -98,14 +98,14 @@ Die gesamte \textbf{kinetische Energie des Systems} ist somit:
 \begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung2.8}
     \begin{split}
         E_{\mathrm{kin}} &= E_{\mathrm{kin,trans}} + E_{\mathrm{kin,rot}} \\
-        E_{\mathrm{kin}} &= \frac{1}{2} \left( m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2 \right) \dot\theta^2 + J_2\dot\theta\dot\varphi + \frac{1}{2} J_2 \dot\varphi^2
+        E_{\mathrm{kin}} &= \frac{1}{2}\cdot \left( m_1\cdot l_1^2 + m_2\cdot l_2^2 + J_1 + J_2 \right) \cdot\dot\theta^2 + J_2\cdot\dot\theta\cdot\dot\varphi + \frac{1}{2}\cdot J_2\cdot\dot\varphi^2
     \end{split}
 \end{empheq}
 \newline
 Der Ursprung der potentiellen Energie liegt bei Null. Somit ergibt sich die \textbf{potentielle Energie des Systems} zu:
 
 \begin{equation} \label{eq:Gleichung2.9}
-    \boxed{E_{\mathrm{pot}} = \left( m_1 l_1 + m_2 l_2 \right) g\cos (\theta)}
+    \boxed{E_{\mathrm{pot}} = \left( m_1\cdot l_1 + m_2\cdot l_2 \right)\cdot g\cdot \cos (\theta)}
 \end{equation}
 
 \subsubsection{Herleitung der Bewegungsgleichungen}
@@ -122,7 +122,7 @@ Die \textbf{Lagrange-Funktion} $L$ wird aus der Differenz der kinetischen Energi
 Die \textbf{dissipative Energie} $D$ ist:
 
 \begin{equation} \label{eq:Gleichung2.11}
-    \boxed{D = \frac{1}{2} c_1 \dot\theta^2 + \frac{1}{2} c_2 \dot\varphi^2}
+    \boxed{D = \frac{1}{2}\cdot c_1\cdot\dot\theta^2 + \frac{1}{2}\cdot c_2 \cdot\dot\varphi^2}
 \end{equation}
 \newline
 Zieht man nun den Ansatz aus \autoref{eq:Gleichung2.5} heran und wendet diesen für die generalisierte Koordinate $\theta$ an, so erhält man die \textbf{Bewegungsgleichung des Schwungrades}:
@@ -131,14 +131,14 @@ Zieht man nun den Ansatz aus \autoref{eq:Gleichung2.5} heran und wendet diesen f
     \boxed{\left( m_1 l_1^2 + m_2 l_2^2 + J_1 + J_2\right) \ddot\theta + J_2\ddot\varphi + c_1\dot\theta - \left( m_1 l_1 + m_2 l_2 \right) g\sin (\theta) = 0}
 \end{equation}
 \newline
-Ebenfalls der Gleiche Ansatz wird nun für die generalisierte Koordinate $\varphi$ angewendet:
+Ebenfalls wird der gleiche Ansatz für die generalisierte Koordinate $\varphi$ angewendet:
 
 \begin{equation} \label{eq:Gleichung2.13}
-    J_2 \left( \ddot\theta + \ddot\varphi \right) + c_2 \dot\varphi = \tau
+    J_2\cdot\left( \ddot\theta + \ddot\varphi \right) + c_2\cdot\dot\varphi = \tau
 \end{equation}
 \newline
-Setzt man nun \autoref{eq:Gleichung2.4} in \autoref{eq:Gleichung2.13} ein erhält man die \textbf{Bewegungsgleichung des Pendels}:
+Setzt man nun \autoref{eq:Gleichung2.4} in \autoref{eq:Gleichung2.13} ein, erhält man die \textbf{Bewegungsgleichung des Pendels}:
 
 \begin{equation} \label{eq:Gleichung2.14}
-    \boxed{J_2 \left( \ddot\theta + \ddot\varphi \right) + c_2 \dot\varphi = K_{\mathrm{t}} i_{\mathrm{a}} = K_{\mathrm{t}} \frac{V_{\mathrm{m}} - K_{\mathrm{b}} \dot\varphi}{R_{\mathrm{a}}}}
+    \boxed{J_2\cdot\left( \ddot\theta + \ddot\varphi \right) + c_2\cdot\dot\varphi = K_{\mathrm{t}}\cdot i_{\mathrm{a}} = K_{\mathrm{t}}\cdot \frac{V_{\mathrm{m}} - K_{\mathrm{b}}\cdot \dot\varphi}{R_{\mathrm{a}}}}
 \end{equation}

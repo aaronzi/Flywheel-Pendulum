@@ -7,7 +7,7 @@ Um das Verhalten mittels mathematischer Beziehungen zu veranschaulichen, wird di
     \underline{u} = V_{\mathrm{m}},
 \end{equation}
 \newline
-wobei $V_{\mathrm{m}}$ die Eingangsspannung des Gleichstrommotors aus \autoref{eq:Gleichung2.1} ist.Die \textbf{Systemzustände} des Schwungrad-Pendels sind:
+wobei $V_{\mathrm{m}}$ die Eingangsspannung des Gleichstrommotors aus \autoref{eq:Gleichung2.1} ist. Die \textbf{Systemzustände} des Schwungrad-Pendels sind:
 
 \begin{align}
     \underline{x} &=
@@ -28,7 +28,7 @@ wobei $V_{\mathrm{m}}$ die Eingangsspannung des Gleichstrommotors aus \autoref{e
 Nach zeitlicher Ableitung des Zustandsvektors ergibt sich der \textbf{Vektor der Zustandsänderung} zu:
 
 \begin{align}
-    \underline{x} &=
+    \underline{\dot{x}} &=
     \begin{bmatrix} \label{eq:Gleichung3.3}
         \dot x_{\mathrm{1}} \\
         \dot x_{\mathrm{2}} \\
@@ -43,19 +43,17 @@ Nach zeitlicher Ableitung des Zustandsvektors ergibt sich der \textbf{Vektor der
     \end{bmatrix}
 \end{align}
 \newline
-Die \textbf{Ausgänge des Systems} gleichen den den vier Zuständen und ergeben sich somit zu
+Die \textbf{Ausgänge des Systems} ergeben sich zu
 
 \begin{align}
     \underline{y} &=
     \begin{bmatrix} \label{eq:Gleichung3.4}
         \varphi     \\
-        \dot\varphi \\
         \theta      \\
-        \dot\theta
     \end{bmatrix}.
 \end{align}
 
-\subsection{Nichtlineares Zustandsraummodell}
+\subsection{Nichtlineares Zustandsraummodell} \label{sec:nichtlinearesZustandsraummodell}
 
 Zum Aufstellen des nichtlinearen Zustandsraummodells werden die \autoref{eq:Gleichung2.12} und \autoref{eq:Gleichung2.14} nach den höchsten Ableitungen von $\ddot\varphi$ und $\ddot\theta$ umgestellt.
 
@@ -75,7 +73,7 @@ Beide Gleichungen sind über die die Winkelbeschleunigung des Schwungrades $\ddo
     \end{split}
 \end{align}
 \newline
-Mit Hilfe der Gleichungen \ref{eq:Gleichung3.1}, \ref{eq:Gleichung3.2} und \ref{eq:Gleichung3.3}, durch das einsetzen in \autoref{eq:Gleichung3.6} und dem Zusammenfassen und Umstellen nach $\ddot\varphi$ \bzw $\ddot\theta$ folgt das \textbf{nichtlineare Zustandsraummodell}.
+Mit Hilfe der Gleichungen \ref{eq:Gleichung3.1}, \ref{eq:Gleichung3.2} und \ref{eq:Gleichung3.3}, durch das Einsetzen in \autoref{eq:Gleichung3.6} und dem Zusammenfassen und Umstellen nach $\ddot\varphi$ \bzw $\ddot\theta$ folgt das \textbf{nichtlineare Zustandsraummodell}.
 
 \begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung3.7}
     \underline{\dot x} =
@@ -155,7 +153,6 @@ Die allgemeine Form des \textbf{linearen Zustandsraummodells} lautet:
         \underline{y} &= \underline{C}\cdot\underline{x}+\underline{D}\cdot\underline{u}
     \end{split}
 \end{empheq}
-\newline
 Wendet man nun die Linearisierungsvorschrift aus \autoref{eq:Gleichung3.9} unter Nutzung der Ruhelagen an, so erhält man das konkrete linearisierte Zustandsraummodell für das System. In \autoref{eq:Gleichung3.13} ist das linearisierte Zustandsraummodell für die obere Ruhelage und in \autoref{eq:Gleichung3.14} das für die untere Ruhelage dargestellt.
 
 \begin{empheq}[box=\widefbox]{align} \label{eq:Gleichung3.13}
